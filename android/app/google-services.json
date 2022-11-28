@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1054686718117",
+    "project_id": "foodnine-7fc08",
+    "storage_bucket": "foodnine-7fc08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054686718117:android:28b4d2e9fb1ce4d095454c",
+        "android_client_info": {
+          "package_name": "com.foodnine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054686718117-anc1a33p1s41kqtu9du8l6jscfufk3l8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodnine",
+            "certificate_hash": "9a79c653afe6426b32be10259022e132e6685283"
+          }
+        },
+        
+        {
+          "client_id": "1054686718117-f0gpruiufnb3to57krn00p7p30fumr37.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodnine",
+            "certificate_hash": "18c1ea2d916343bfeb374179c1c5b6bf892730cc"
+          }
+        },
+        {
+          "client_id": "1054686718117-7ii6f3ql9iek8669h9fii0fdoqheb6u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD_bBVXjDi3-yluhOtLL3MoBQabwsc_Uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054686718117-7ii6f3ql9iek8669h9fii0fdoqheb6u9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1054686718117-ff5fjro2lebbtb61phmt76fcjft6ncn0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.foodnine"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
