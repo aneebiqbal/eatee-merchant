@@ -49,22 +49,27 @@ const SigninScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View style={styles.centered}>
-          <Image 
-            source={Images.logo} 
-            style={styles.logo} 
-            resizeMode="contain"
-          />
+    // <SafeAreaView style={styles.container}>
+    <View style={{flexDirection:'row', flex: 1, alignItems:'center', marginRight:30}}>
+      <View style={{ flex: 0.5}}>
+        <Image
+          source={Images.login}
+          style={{
+            height: 1200,
+            width: 350,
+          }}
+        />
+      </View>
 
+      {/* <ScrollView> */}
+      <View style={{flex: 0.5}}>
           <Text style={[Fonts.h4, Fonts.weight1]}>
             {strings.start}
           </Text>
-          <Text style={[Fonts.small, Fonts.weight2]}>
+          <Text style={[Fonts.small, Fonts.weight4, {marginTop: 10}]}>
             {strings.loginText}
           </Text>
-        </View>
+        
 
         <Formik
           validationSchema={signInValidation}
@@ -76,7 +81,7 @@ const SigninScreen = ({navigation}) => {
         >
           {({handleChange, handleBlur, handleSubmit, values, errors}) => (
             <>
-              <View style={ApplicationStyles.p20}>
+              <View style={{marginTop: 70}}>
                 <InputField
                   leftIcon={'email'}
                   placeholder={Strings.emailPlaceholder}
@@ -96,18 +101,19 @@ const SigninScreen = ({navigation}) => {
               <View style={{paddingHorizontal: 0}}>
                 <Text style={styles.errorStyle}>{error}</Text>
               </View>
-              <View style={[{marginBottom: WP('5')}]}>
                 <FullwidthButton
+                  notApplyMargin
                   label={Strings.login}
                   onPress={handleSubmit}
                   loading={status === Status.LOADING}
                 />
-              </View>
             </>
           )}
         </Formik>
-      </ScrollView>
-    </SafeAreaView>
+        
+        </View>
+      {/* </ScrollView> */}
+    </View>
   )
 };
 

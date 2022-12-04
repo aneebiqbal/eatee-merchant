@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
-import {Colors, Fonts} from '../../theme';
+import {Text, StyleSheet, View, Image} from 'react-native';
+import {Colors, Fonts, Images} from '../../theme';
 import {HP} from '../../utils/responsive';
 import BackIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,17 +17,20 @@ const defaultProps = {};
 const Header = props => {
   // console.log('data props -- ', props);
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(false);
-  const {
-    user: {accessToken},
-  } = useSelector(({AccountState}) => AccountState);
-  const {totalItems} = useSelector(({CartState}) => CartState);
-  const dispatch = useDispatch();
 
   return (
     <>
       <View style={[styles.container]}>
         <View style={[styles.leftIcon]}>
+        {props.logo ? (
+            <Image
+              source={Images.logo}
+              height={20}
+              width={20}
+            />)
+            : null}
+
+
           {props.left ? (
             <BackIcon
               name="left"
@@ -46,7 +49,7 @@ const Header = props => {
             />
           ) : null}
         </View>
-        <View style={[styles.ml20]}>
+        {/* <View style={[styles.ml20]}>
           {props.location ? (
             <TouchableOpacity onPress={props.onOpen}>
               <Text style={[styles.locHeading]}>
@@ -59,21 +62,23 @@ const Header = props => {
           ) : (
             <Text style={[styles.titleStyle]}>{props.title}</Text>
           )}
-        </View>
+        </View> */}
         <View style={styles.rightIcon}>
           <View>
-            {props.isFav ? (
-              <View style={styles.mr10}>
-                <FavouriteButton
-                  onPress={() => setFavouriteRestaurant()}
-                  fav={props.fav}
-                  loading={loading}
-                  withoutBackground
+            {props.user ? (
+              <View style={{flexDirection:'row',flex: 1, alignItems:'center'}}>
+                <Text style={[Fonts.bold,{color: 'white', marginRight: 16}]}>Aneeb Iqbal</Text>
+                <Image
+                  source={Images.man}
+                  style={{
+                    height: 35,
+                    width: 35,
+                  }}
                 />
               </View>
             ) : null}
           </View>
-          <View>
+          {/* <View>
             {props.cart ? (
               <View style={styles.mr20}>
                 <Ionicons
@@ -89,7 +94,7 @@ const Header = props => {
                 </View>
               </View>
             ) : null}
-          </View>
+          </View> */}
         </View>
       </View>
       {props.divider && <Divider style={styles.dividerMargin} />}
@@ -98,9 +103,11 @@ const Header = props => {
 };
 const styles = StyleSheet.create({
   container: {
+    backgroundColor:'black',
     height: HP('8'),
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 16
     // justifyContent: 'space-between',
   },
   leftIcon: {
@@ -127,7 +134,7 @@ const styles = StyleSheet.create({
   },
   rightIcon: {
     position: 'absolute',
-    right: 0,
+    right: 16,
     flexDirection: 'row',
     alignItems: 'center',
   },

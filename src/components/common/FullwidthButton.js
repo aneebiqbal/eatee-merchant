@@ -53,9 +53,10 @@ const FullwidthButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: HP('7'),
+    height: HP('6'),
     justifyContent: 'center',
     borderRadius: 16,
+    backgroundColor: Colors.primary
   },
   loader: {
     backgroundColor: Colors.primary,
