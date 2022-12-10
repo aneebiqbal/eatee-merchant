@@ -9,6 +9,7 @@ export default {
   history: require('../assets/images/history.png'),
   inventory: require('../assets/images/inventory.png'),
   orders: require('../assets/images/orders.png'),
+  ordersDrawer: require('../assets/images/ordersDrawer.png'),
 
 
 };

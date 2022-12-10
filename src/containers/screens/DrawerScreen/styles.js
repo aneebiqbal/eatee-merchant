@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
   close: {
     backgroundColor: Colors.white,
     borderRadius: 15,
-    marginLeft: WP('10'),
-    marginBottom: 40,
+    marginLeft: WP('4'),
+    marginBottom: 30,
   },
   name: {
     marginTop: HP('2'),
@@ -32,8 +32,8 @@ export const styles = StyleSheet.create({
   itemRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: WP('10'),
-    paddingVertical: WP('3'),
+    marginHorizontal: WP('9'),
+    paddingVertical: WP('2'),
   },
   title: {
     flex: 1,
@@ -56,6 +56,6 @@ export const styles = StyleSheet.create({
     zIndex: 10,
   },
   marginTop: {
-    marginTop: HP('5'),
+    marginTop: HP('2'),
   },
 });

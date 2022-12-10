@@ -14,6 +14,11 @@ import PasswordConfirmationScreen from '../containers/screens/AuthScreens/Passwo
 import ResetPasswordScreen from '../containers/screens/AuthScreens/ResetPasswordScreens/ResetPasswordScreen';
 import ChangePasswordScreen from '../containers/screens/ChangePasswordScreen';
 import HomeScreen from '../containers/screens/HomeScreen';
+import OrdersScreen from '../containers/screens/OrdersScreen';
+import InventoryScreen from '../containers/screens/InventoryScreen';
+import HistoryScreen from '../containers/screens/HistoryScreen';
+import MyAccountScreen from '../containers/screens/MyAccountScreen';
+import SettingsScreen from '../containers/screens/SettingsScreen';
 
 
 import {connect} from 'react-redux';
@@ -36,6 +41,31 @@ const AppStack = () => {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrdersScreen"
+        component={OrdersScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="InventoryScreen"
+        component={InventoryScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HistoryScreen"
+        component={HistoryScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MyAccountScreen"
+        component={MyAccountScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

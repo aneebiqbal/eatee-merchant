@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './styles';
-import {Fonts} from '../../../theme';
+import {Fonts, Images} from '../../../theme';
+import { HP, WP } from '../../../utils';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -16,14 +17,21 @@ const defaultProps = {
   onPress: () => {},
 };
 
-const DrawerItem = ({title, Icon, onPress, reduced}) => {
+const DrawerItem = ({title, onPress, reduced, image}) => {
   return (
     <>
-      <TouchableOpacity onPress={onPress} style={styles.mv10}>
+      <TouchableOpacity onPress={onPress} style={{alignItems:'center', marginTop: 20}}>
         <View style={styles.itemRow}>
-          {Icon}
           <Text style={[styles.title, Fonts.small]}>{title}</Text>
         </View>
+        <Image
+          source={image}
+          style={{
+            height: HP('4'),
+            width: WP('4'),
+            marginRight:20
+          }}
+        />
       </TouchableOpacity>
     </>
   );

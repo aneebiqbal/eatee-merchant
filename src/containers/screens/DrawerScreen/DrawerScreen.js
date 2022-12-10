@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import DrawerHeader from './DrawerHeader';
 import DrawerItem from './DrawerItem';
@@ -12,6 +12,9 @@ import {logout} from '../../../actions/AccountActions';
 import strings from '../../../constants/strings';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ButtonIconOrText from '../../../components/common/ButtonIconOrText';
+import { Images } from '../../../theme';
+
+
 const propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
@@ -23,17 +26,45 @@ const DrawerScreen = ({navigation}) => {
   const dispatch = useDispatch();
   return (
     <SafeAreaView style={styles.container}>
-      <DrawerHeader navigation={navigation} />
-      {/* <View style={styles.marginTop}>
+      {/* <DrawerHeader navigation={navigation} /> */}
+
+      <View style={styles.marginTop}>
         <DrawerItem
-          title={strings.favourite}
-          Icon={<EvilIcons name="heart" size={30} />}
+          title={strings.orderTitle}
+          image={Images.ordersDrawer}
           onPress={() => {
             navigation.closeDrawer();
-            // navigation.replace('HomeScreen');
+             navigation.replace('OrdersScreen');
           }}
         />
-      </View> */}
+
+        <DrawerItem
+          title={strings.inventory}
+          image={Images.inventory}
+          onPress={() => {
+            navigation.closeDrawer();
+             navigation.replace('InventoryScreen');
+          }}
+        />
+
+        <DrawerItem
+          title={strings.history}
+          image={Images.history}
+          onPress={() => {
+            navigation.closeDrawer();
+             navigation.replace('InventoryScreen');
+          }}
+        />
+
+        <DrawerItem
+          title={strings.myAccount}
+          image={Images.accounts}
+          onPress={() => {
+            navigation.closeDrawer();
+             navigation.replace('InventoryScreen');
+          }}
+        />
+      </View>
 
       <ButtonIconOrText
         label={strings.logOut}
