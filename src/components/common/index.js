@@ -7,7 +7,7 @@ import ShadowBox from './ShadowBox'
 import ShadowCard from './ShadowCard'
 import Spinner from './Spinner'
 import ButtonIconOrText from './ButtonIconOrText'
-
+import PasswordConfrmation from './PasswordConfrmation'
 
 
 export {
@@ -19,5 +19,6 @@ export {
     ShadowBox,
     ShadowCard,
     Spinner,
-    ButtonIconOrText
+    ButtonIconOrText,
+    PasswordConfrmation
 };

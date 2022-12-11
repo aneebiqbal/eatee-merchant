@@ -18,6 +18,7 @@ import { Formik } from 'formik';
 import {signInValidation} from './Validation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import strings from '../../../../constants/strings';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const propTypes = {
   navigation: PropTypes.shape({
@@ -101,7 +102,21 @@ const SigninScreen = ({navigation}) => {
               <View style={{paddingHorizontal: 0}}>
                 <Text style={styles.errorStyle}>{error}</Text>
               </View>
+
+              <TouchableOpacity onPress={()=> navigation.navigate('ResetPasswordScreen')}>
+                <Text style={[Fonts.extraSmall, styles.forgotPassword]}>
+                  Forgot your password?
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=> navigation.navigate('PasswordConfirmationScreen')}>
+                <Text style={[Fonts.extraSmall, styles.forgotPassword]}>
+                  Password Confermation
+                </Text>
+              </TouchableOpacity>
+
                 <FullwidthButton
+                  labelStyle
                   notApplyMargin
                   label={Strings.login}
                   onPress={handleSubmit}

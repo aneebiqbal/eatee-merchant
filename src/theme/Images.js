@@ -10,6 +10,9 @@ export default {
   inventory: require('../assets/images/inventory.png'),
   orders: require('../assets/images/orders.png'),
   ordersDrawer: require('../assets/images/ordersDrawer.png'),
+  emailIcon: require('../assets/images/emailicon.png'),
+  passwordChange: require('../assets/images/passwordChange.png'),
+
 
 
 };

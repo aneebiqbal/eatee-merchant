@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import {Spinner} from '.';
-import {Colors} from '../../theme';
+import {Colors, Fonts} from '../../theme';
 import {HP, WP} from '../../utils';
 const propTypes = {};
 
@@ -30,7 +30,7 @@ const FullwidthButton = ({
               : !notApplyMargin && {margin: WP('7')},
             disabled ? {backgroundColor: Colors.lightGray} : {},
           ]}
-          labelStyle={disabled ? {color: Colors.black} : {}}
+          labelStyle={disabled ? {color: Colors.black} : Fonts.small}
           contentStyle={{height: '100%'}}
           // uppercase={false}
         >

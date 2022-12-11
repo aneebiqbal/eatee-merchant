@@ -89,17 +89,16 @@ const AuthStack = () => {
         component={SigninScreen}
         options={{headerShown: false}}
       />
+       <Stack.Screen
+        name="ResetPasswordScreen"
+        component={ResetPasswordScreen}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="PasswordConfirmationScreen"
         component={PasswordConfirmationScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="ResetPasswordScreen"
-        component={ResetPasswordScreen}
-        options={{headerShown: false}}
-      />
-
     </Stack.Navigator>
   );
 };

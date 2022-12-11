@@ -14,13 +14,9 @@ const ShadowCard = ({heading, image, style, onPress}) => {
       <View style={styles.innerContainer}>
         <Image
           source={image}
-          style={{
-            height: 35,
-            width: 35,
-            marginBottom: 20
-          }}
+          style={styles.imgStyle}
         />
-        <Text style={[Fonts.medium, {color: Colors.black, marginLeft: 2}]}>
+        <Text style={[Fonts.medium, styles.textStyle]}>
           {heading}
         </Text>      
       </View>
@@ -37,6 +33,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imgStyle: {
+    height: 35,
+    width: 35,
+    marginBottom: 20
+  },
+  textStyle: {
+    color: Colors.black,
+    marginLeft: 2
   },
 });
 
