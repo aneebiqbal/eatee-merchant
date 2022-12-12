@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {Images, Fonts, ApplicationStyles} from '../../../../theme';
-import {Image, View, Text, ScrollView} from 'react-native';
+import {Images, Fonts} from '../../../../theme';
+import {Image, View, Text} from 'react-native';
 
 import {
   FullwidthButton,
@@ -12,11 +12,9 @@ import Strings from '../../../../constants/strings';
 import {styles} from '../styles';
 import {signIn} from '../../../../actions/AccountActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {WP} from '../../../../utils';
 import Status from '../../../../constants/status';
 import { Formik } from 'formik';
 import {signInValidation} from './Validation';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import strings from '../../../../constants/strings';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -51,23 +49,20 @@ const SigninScreen = ({navigation}) => {
 
   return (
     // <SafeAreaView style={styles.container}>
-    <View style={{flexDirection:'row', flex: 1, alignItems:'center', marginRight:30}}>
-      <View style={{ flex: 0.5}}>
+    <View style={styles.passwordConfermationContainer}>
+      <View style={styles.imagePCViewStyle}>
         <Image
           source={Images.login}
-          style={{
-            height: 1200,
-            width: 350,
-          }}
+          style={styles.imagePCStyle}
         />
       </View>
 
       {/* <ScrollView> */}
-      <View style={{flex: 0.5}}>
+      <View style={styles.imagePCViewStyle}>
           <Text style={[Fonts.h4, Fonts.weight1]}>
             {strings.start}
           </Text>
-          <Text style={[Fonts.small, Fonts.weight4, {marginTop: 10}]}>
+          <Text style={[Fonts.small, Fonts.weight4,styles.createPasswordTextMargin]}>
             {strings.loginText}
           </Text>
         
@@ -82,7 +77,7 @@ const SigninScreen = ({navigation}) => {
         >
           {({handleChange, handleBlur, handleSubmit, values, errors}) => (
             <>
-              <View style={{marginTop: 70}}>
+              <View style={styles.inputFieldContainer}>
                 <InputField
                   leftIcon={'email'}
                   placeholder={Strings.emailPlaceholder}
@@ -99,19 +94,19 @@ const SigninScreen = ({navigation}) => {
                   error={errors.password && errors.password}
                 />
               </View>
-              <View style={{paddingHorizontal: 0}}>
+              <View style={styles.errorStyleContainer}>
                 <Text style={styles.errorStyle}>{error}</Text>
               </View>
 
               <TouchableOpacity onPress={()=> navigation.navigate('ResetPasswordScreen')}>
                 <Text style={[Fonts.extraSmall, styles.forgotPassword]}>
-                  Forgot your password?
+                  {strings.forgotPassword}
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={()=> navigation.navigate('PasswordConfirmationScreen')}>
                 <Text style={[Fonts.extraSmall, styles.forgotPassword]}>
-                  Password Confermation
+                  {strings.forgotConfermation}
                 </Text>
               </TouchableOpacity>
 

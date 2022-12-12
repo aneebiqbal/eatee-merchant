@@ -28,6 +28,8 @@ export default {
   passwordSubHeading: 'Set your Security to Get Sign Up',
   confirmPassword: 'Confirm Password',
   forgot: 'Reset Password',
+  forgotPassword: 'Forgot your password?',
+  forgotConfermation: ' Password Confermation',
   reset: 'Enter your email to receive reset password link',
   resetButton: 'RESET',
   bannerHeading: 'Wait, double ham burger?',
@@ -185,5 +187,7 @@ export default {
   send: 'Send',
   fourPoint9: '4.9',
   twentyMin: '20 min',
-  facebookEmailPostFix:'@foodlea.com'
+  facebookEmailPostFix:'@foodlea.com',
+  emailSent: 'Email Sent',
+  passwordResetEmail: 'We have sent you an email with reset password link. Open and recover your password',
 };

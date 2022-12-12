@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { Colors } from '../../../theme';
 import {HP, WP} from '../../../utils';
 
 export const styles = StyleSheet.create({
@@ -15,4 +16,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  errorStyle: {
+    color: Colors.primary,
+    textAlign: 'center',
+  },
+  
 });
