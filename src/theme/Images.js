@@ -10,6 +10,5 @@ export default {
   inventory: require('../assets/images/inventory.png'),
   orders: require('../assets/images/orders.png'),
   ordersDrawer: require('../assets/images/ordersDrawer.png'),
-
-
+  burger: require('../assets/images/burger-1.png'),
 };

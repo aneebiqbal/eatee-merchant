@@ -16,7 +16,7 @@ export default {
   drawerHeader: '#f1f6fb',
   helpColor: '#FCDED3',
   // drawerBody: "#888888",
-  lightGra: '#666D7B',
+  lightGra: '#E3E4E7',
   drawerBody: '#f1f6fb',
   lightGray: '#f1f6fb',
   indicatorBack: '#b1b1b1',
@@ -25,6 +25,7 @@ export default {
   completed: '#74c48c',
   progress: '#f4941c',
   delayed: '#cf2c34',
+  success: '#008957',
 
   //client's provided colors in figma
   primaryGrayDark: '#000C23',

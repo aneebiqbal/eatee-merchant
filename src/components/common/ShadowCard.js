@@ -8,10 +8,10 @@ const propTypes = {};
 
 const defaultProps = {};
 
-const ShadowCard = ({heading, image, style, onPress}) => {
+const ShadowCard = ({heading, image, style, onPress, children}) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.container, ApplicationStyles.shadow, style]}>
-      <View style={styles.innerContainer}>
+      {image && <View style={styles.innerContainer}>
         <Image
           source={image}
           style={{
@@ -23,7 +23,8 @@ const ShadowCard = ({heading, image, style, onPress}) => {
         <Text style={[Fonts.medium, {color: Colors.black, marginLeft: 2}]}>
           {heading}
         </Text>      
-      </View>
+      </View>}
+      {children}
     </TouchableOpacity>
   );
 };

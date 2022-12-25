@@ -15,9 +15,10 @@ const ButtonIconOrText = ({
   color = 'white',
   size = 20,
   type,
+  buttonVariant // circle or default
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
+    <TouchableOpacity onPress={onPress} style={[styles.container, style, buttonVariant === 'circle' ? styles.circle : {}]}>
       {name && type && !label ? (
         <Icon name={name} type={type} color={color} size={size} />
       ) : (
@@ -32,13 +33,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 15,
     backgroundColor: Colors.primary,
-    paddingVertical: 20,
   },
   labelText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
   },
+  circle: {
+    borderRadius: 20,
+    padding: 10
+  }
 });
 
 ButtonIconOrText.propTypes = propTypes;
