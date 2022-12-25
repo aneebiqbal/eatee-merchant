@@ -6,19 +6,17 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
 import DrawerScreen from '../containers/screens/DrawerScreen/DrawerScreen';
-import SplashScreen from '../containers/screens/SplashScreen';
 import SigninScreen from '../containers/screens/AuthScreens/SigninScreen/SigninScreen';
 import PasswordConfirmationScreen from '../containers/screens/AuthScreens/PasswordConfirmationScreen/PasswordConfirmationScreen';
 import ResetPasswordScreen from '../containers/screens/AuthScreens/ResetPasswordScreens/ResetPasswordScreen';
-import ChangePasswordScreen from '../containers/screens/ChangePasswordScreen';
 import HomeScreen from '../containers/screens/HomeScreen';
 import OrdersScreen from '../containers/screens/OrdersScreen';
 import InventoryScreen from '../containers/screens/InventoryScreen';
 import HistoryScreen from '../containers/screens/HistoryScreen';
 import MyAccountScreen from '../containers/screens/MyAccountScreen';
 import SettingsScreen from '../containers/screens/SettingsScreen';
+import BottomStack from './BottomStack';
 
 
 import {connect} from 'react-redux';
@@ -29,7 +27,7 @@ const Drawer = createDrawerNavigator();
 const AppStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="HomeScreen"
+      initialRouteName="BottomStack"
       headerMode={'screen'}
       screenOptions={{
         headerTintColor: 'black',
@@ -38,6 +36,11 @@ const AppStack = () => {
         },
         headerBackTitleVisible: false,
       }}>
+      <Stack.Screen
+        name="BottomStack"
+        component={BottomStack}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
