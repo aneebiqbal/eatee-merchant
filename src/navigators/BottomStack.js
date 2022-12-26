@@ -1,119 +1,213 @@
-// import React from 'react';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import Feather from 'react-native-vector-icons/Feather';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-// import Foundation from 'react-native-vector-icons/Foundation';
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-// //Screens
-// import HomeScreen from '../containers/screens/HomeScreen';
-// import ProfileScreen from '../containers/screens/ProfileScreen';
-// import PaymentScreen from '../containers/screens/PaymentScreen/PaymentScreen';
-// import OrdersScreen from '../containers/screens/OrdersScreen/OrdersScreen';
-// import FavouriteRestaurantsScreen from '../containers/screens/FavouriteRestaurantsScreen';
+//Screens
+import OrdersScreen from '../containers/screens/OrdersScreen';
 
-// import {Colors} from '../theme';
-// import {createStackNavigator} from '@react-navigation/stack';
 
-// const _BottomStack = createBottomTabNavigator();
-// const Stack = createStackNavigator();
+import {ApplicationStyles, Colors, Images} from '../theme';
+import {createStackNavigator} from '@react-navigation/stack';
+import InventoryScreen from '../containers/screens/InventoryScreen';
+import HistoryScreen from '../containers/screens/HistoryScreen';
+import SettingsScreen from '../containers/screens/SettingsScreen';
+import MyAccountScreen from '../containers/screens/MyAccountScreen';
+import HomeScreen from '../containers/screens/HomeScreen';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-// const HomeStack = () => {
-//   return (
-//     <Stack.Navigator initialRouteName="HomeScreen" headerMode={'screen'}>
-//       <Stack.Screen
-//         name="HomeScreen"
-//         component={HomeScreen}
-//         options={{headerShown: false}}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
+const _BottomStack = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-// const BottomStack = props => {
-//   return (
-//     <_BottomStack.Navigator
-//       screenOptions={({route}) => ({
-//         tabBarLabel: () => {
-//           return null;
-//         },
-//         tabBarActiveTintColor: Colors.primary,
-//         inactiveTintColor: 'gray',
-//         tabBarStyle: {backgroundColor: Colors.lightGray},
+const HomeStack = (navigation) => {
+  return (
+    <Stack.Navigator initialRouteName="HomeScreen" headerMode={'screen'}>
+      <Stack.Screen
+        name="OrdersScreen"
+        component={OrdersScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
 
-//         tabBarIcon: ({focused, color, size}) => {
-//           // You can return any component that you like here!
-//           if (route.name === 'HomeStack') {
-//             return <Foundation name="home" size={size} color={color} />;
-//           }
-//           if (route.name === 'Orders') {
-//             return (
-//               <Foundation name="clipboard-notes" size={size} color={color} />
-//             );
-//           }
+const BottomStack = ({props, navigation} )=> {
+  return (
+    <_BottomStack.Navigator
+      screenOptions={({route}) => ({
+        tabBarLabel: () => {
+          return null;
+        },
+        tabBarActiveTintColor: Colors.primary,
+        inactiveTintColor: 'gray',
+        tabBarStyle: {backgroundColor: Colors.lightGray},
 
-//           if (route.name === 'Payment') {
-//             return <Ionicons name="wallet-outline" size={size} color={color} />;
-//           }
-//           if (route.name === 'Profile') {
-//             return <Feather name="user" size={size} color={color} />;
-//           }
-//         },
-//         unmountOnBlur: true,
-//       })}>
-//       <_BottomStack.Screen
-//         name="HomeStack"
-//         component={HomeStack}
-//         options={{headerShown: false}}
-//         listeners={{
-//           tabPress: e => {
-//             e.preventDefault();
-//             props.navigation.replace('BottomStack', {
-//               screen: 'HomeStack',
-//             });
-//           },
-//         }}
-//       />
-//       <_BottomStack.Screen
-//         name="Orders"
-//         component={OrdersScreen}
-//         options={{headerShown: false}}
-//         listeners={{
-//           tabPress: e => {
-//             e.preventDefault();
-//             props.navigation.navigate('BottomStack', {
-//               screen: 'Orders',
-//             });
-//           },
-//         }}
-//       />
-//       <_BottomStack.Screen
-//         name="Payment"
-//         component={PaymentScreen}
-//         options={{headerShown: false}}
-//         listeners={{
-//           tabPress: e => {
-//             e.preventDefault();
-//             props.navigation.navigate('BottomStack', {
-//               screen: 'Payment',
-//             });
-//           },
-//         }}
-//       />
-//       <_BottomStack.Screen
-//         name="Profile"
-//         component={ProfileScreen}
-//         options={{headerShown: false}}
-//         listeners={{
-//           tabPress: e => {
-//             e.preventDefault();
-//             props.navigation.navigate('BottomStack', {
-//               screen: 'Profile',
-//             });
-//           },
-//         }}
-//       />
-//     </_BottomStack.Navigator>
-//   );
-// };
+        tabBarIcon: ({focused, color, size}) => {
+          // You can return any component that you like here!
+          if (route.name === 'HomeStack') {
+            return (
+            <TouchableOpacity onPress={() => navigation.navigate('OrdersScreen')} style={[styles.container]}>
+              <View style={styles.innerContainer}>
+                <Image
+                  source={focused ? Images.orders : Images.ordersUnselected}
+                  style={styles.imgStyle}
+                  color={color}
+                  size={size}
+                />
+                <Text>Order</Text>
+              </View>
+            </TouchableOpacity>
+      )}
+          if (route.name === 'InventoryScreen') {
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('InventoryScreen')} style={[styles.container]}>
+                <View style={styles.innerContainer}>
+                  <Image
+                    source={focused ? Images.inventory : Images.inventoryUnselected}
+                    style={styles.imgStyle}
+                    color={color}
+                    size={size}
 
-// export default BottomStack;
+                  />
+              </View>
+            </TouchableOpacity>
+            );
+          }
+          if (route.name === 'HistoryScreen') {
+            return (
+            <TouchableOpacity onPress={() => navigation.navigate('HistoryScreen')} style={[styles.container]}>
+              <View style={styles.innerContainer}>
+                  <Image
+                  source={focused ? Images.history : Images.historyUnselected}
+                  style={styles.imgStyle}
+                  color={color}
+                  size={size}
+
+                  />
+              </View>
+            </TouchableOpacity>)
+          }
+          if (route.name === 'SettingsScreen') {
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('SettingsScreen')} style={[styles.container]}>
+                <View style={styles.innerContainer}>
+                    <Image
+                      source={focused ? Images.settings : Images.settingsUnselected}
+                      style={styles.imgStyle}
+                      color={color}
+                      size={size}
+                    />
+                </View>
+              </TouchableOpacity>)
+          }
+          if (route.name === 'MyAccountScreen') {
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('MyAccountScreen')} style={[styles.container]}>
+                <View style={styles.innerContainer}>
+                    <Image
+                    source={focused ? Images.accounts : Images.accountsUnselected}
+                    style={styles.imgStyle}
+                    color={color}
+                    size={size}
+                    />
+                </View>
+              </TouchableOpacity>)
+          }
+        },
+        unmountOnBlur: true,
+      })}>
+      <_BottomStack.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+            props.navigation.replace('BottomStack', {
+              screen: 'HomeStack',
+            });
+          },
+        }}
+      />
+      <_BottomStack.Screen
+        name="InventoryScreen"
+        component={InventoryScreen}
+        options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+            props.navigation.navigate('BottomStack', {
+              screen: 'InventoryScreen',
+            });
+          },
+        }}
+      />
+      <_BottomStack.Screen
+        name="HistoryScreen"
+        component={HistoryScreen}
+        options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+            props.navigation.navigate('BottomStack', {
+              screen: 'HistoryScreen',
+            });
+          },
+        }}
+      />
+      <_BottomStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+            props.navigation.navigate('BottomStack', {
+              screen: 'SettingsScreen',
+            });
+          },
+        }}
+      />
+      <_BottomStack.Screen
+        name="MyAccountScreen"
+        component={MyAccountScreen}
+        options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+            props.navigation.navigate('BottomStack', {
+              screen: 'MyAccountScreen',
+            });
+          },
+        }}
+      />
+    </_BottomStack.Navigator>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    marginTop:10
+  },
+  innerContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgStyle: {
+    height: 30,
+    width: 30,
+    marginBottom: 20
+  },
+  textStyle: {
+    color: Colors.black,
+    marginLeft: 2
+  },
+});
+
+export default BottomStack;

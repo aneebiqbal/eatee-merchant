@@ -13,6 +13,7 @@ import OrderItem from './Orders/OrderItem'
 import MenuItem from './Orders/MenuItem'
 import SearchField from './SearchField'
 import OrdersStatisticsCard from './Orders/OrdersStatisticsCard'
+import PasswordConfrmation from './PasswordConfrmation'
 
 export {
   InputField,
@@ -24,6 +25,7 @@ export {
   ShadowCard,
   Spinner,
   ButtonIconOrText,
+  PasswordConfrmation,
   Tag,
   CaptionedText,
   OrderItem,
