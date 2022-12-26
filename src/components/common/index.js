@@ -12,6 +12,7 @@ import CaptionedText from './CaptionedText'
 import OrderItem from './Orders/OrderItem'
 import MenuItem from './Orders/MenuItem'
 import SearchField from './SearchField'
+import OrdersStatisticsCard from './Orders/OrdersStatisticsCard'
 
 export {
   InputField,
@@ -26,6 +27,7 @@ export {
   Tag,
   CaptionedText,
   OrderItem,
+  OrdersStatisticsCard,
   MenuItem,
   SearchField
 };

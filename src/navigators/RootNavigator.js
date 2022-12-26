@@ -22,6 +22,7 @@ import SettingsScreen from '../containers/screens/SettingsScreen';
 
 
 import {connect} from 'react-redux';
+import OrderStatisticsScreen from '../containers/screens/OrdersScreen/OrderStatisticsScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -46,6 +47,11 @@ const AppStack = () => {
       <Stack.Screen
         name="OrdersScreen"
         component={OrdersScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrdersStatisticsScreen"
+        component={OrderStatisticsScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

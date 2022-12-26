@@ -20,6 +20,7 @@ export default {
   drawerBody: '#f1f6fb',
   lightGray: '#f1f6fb',
   indicatorBack: '#b1b1b1',
+  textGray: '#595E64',
   //status
   all: '#005c91',
   completed: '#74c48c',

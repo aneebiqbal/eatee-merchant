@@ -11,4 +11,9 @@ export default {
   orders: require('../assets/images/orders.png'),
   ordersDrawer: require('../assets/images/ordersDrawer.png'),
   burger: require('../assets/images/burger-1.png'),
+  activeOrders: require('../assets/images/activeOrders.png'),
+  completedOrders: require('../assets/images/completedOrders.png'),
+  pendingOrders: require('../assets/images/pendingOrders.png'),
+  totalOrders: require('../assets/images/totalOrders.png'),
+  
 };
