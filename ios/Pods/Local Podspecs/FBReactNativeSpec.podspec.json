@@ -43,16 +43,16 @@
   "script_phases": {
     "name": "Generate Specs",
     "input_files": [
-      "/Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../Libraries"
+      "/Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../Libraries"
     ],
     "output_files": [
       "$(DERIVED_FILE_DIR)/codegen-FBReactNativeSpec.log",
-      "/Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
-      "/Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm"
+      "/Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
+      "/Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm"
     ],
-    "script": "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"",
+    "script": "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"",
     "execution_position": "before_compile",
     "show_env_vars_in_log": true
   },
-  "prepare_command": "mkdir -p /Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec && touch /Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h /Users/aneebiqbal/Downloads/Projects/foodey/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm"
+  "prepare_command": "mkdir -p /Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec && touch /Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h /Users/aneebiqbal/Downloads/eatee-merchant/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm"
 }

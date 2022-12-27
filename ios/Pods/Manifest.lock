@@ -558,7 +558,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
-  FBReactNativeSpec: 3f3d24efb29e9cce266272200d2c41b404000261
+  FBReactNativeSpec: 0106f9b758a78f8d782cfeca6520fef4f13d7fbc
   Firebase: fb5114cd2bf96e2ff7bcb01d0d9a156cf5fd2f07
   FirebaseAnalytics: 4ab446ce08a3fe52e8a4303dd997cf26276bf968
   FirebaseCore: c5aab092d9c4b8efea894946166b04c9d9ef0e68
@@ -612,6 +612,6 @@ SPEC CHECKSUMS:
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
-PODFILE CHECKSUM: 97640675d0a3ba2f9e26e891e3877dc226dc20eb
+PODFILE CHECKSUM: 00679646b2332b0ed321b519e5850f4ddc86eb45
 
 COCOAPODS: 1.11.3
