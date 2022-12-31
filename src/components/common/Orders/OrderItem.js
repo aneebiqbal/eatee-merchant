@@ -11,8 +11,24 @@ const propTypes = {};
 const defaultProps = {};
 
 const OrderItem = ({
-  //TODO
-  onPress
+  image,
+  heading,
+  text,
+  quantity,
+  onPress,
+  pickup,
+  service,
+  cash,
+  Payment,
+  time,
+  remainingTime,
+  price,
+  total,
+  icon,
+  item,
+  menu,
+
+  //todo
 }) => {
   return (
     <ShadowCard style={{margin: 20, paddingHorizontal: 28}}>
@@ -52,7 +68,7 @@ const OrderItem = ({
             flexDirection: 'row',
           }}>
             <Image 
-              source={Images.man} 
+              source={image} 
               style={{
                 width: 36,
                 height: 36,
@@ -60,12 +76,12 @@ const OrderItem = ({
                 borderRadius: 50
               }}
             />
-            <CaptionedText heading='Soleh Anderson' text='VIEW PROFILE' />
+            <CaptionedText heading={heading} text={text} />
           </View>
-          <CaptionedText heading='13 mins' text='Remaining Time' headingIcon={'clock'}/>
-          <CaptionedText heading='Pickup' text='Service' />
-          <CaptionedText heading='Cash' text='Payment' />
-          <CaptionedText heading='£ 36.00' text='Total' />
+          <CaptionedText heading={time} text={remainingTime} headingIcon={'clock'}/>
+          <CaptionedText heading={pickup} text={service} />
+          <CaptionedText heading={cash} text={Payment} />
+          <CaptionedText heading={price} text={total} />
         </View>
         <TouchableOpacity onPress={onPress}>
           <Icon name='dots-horizontal' type='material-community' color={Colors.primary} size={28} />

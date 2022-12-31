@@ -14,6 +14,9 @@ import MenuItem from './Orders/MenuItem'
 import SearchField from './SearchField'
 import OrdersStatisticsCard from './Orders/OrdersStatisticsCard'
 import PasswordConfrmation from './PasswordConfrmation'
+import OrderHistoryItem from './Orders/OrderHistoryItem'
+
+
 
 export {
   InputField,
@@ -31,5 +34,6 @@ export {
   OrderItem,
   OrdersStatisticsCard,
   MenuItem,
-  SearchField
+  SearchField,
+  OrderHistoryItem
 };

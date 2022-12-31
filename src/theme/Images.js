@@ -23,5 +23,6 @@ export default {
   completedOrders: require('../assets/images/completedOrders.png'),
   pendingOrders: require('../assets/images/pendingOrders.png'),
   totalOrders: require('../assets/images/totalOrders.png'),
+  food: require('../assets/images/food.png'),
   
 };
