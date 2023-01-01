@@ -21,6 +21,8 @@ import BottomStack from './BottomStack';
 
 import {connect} from 'react-redux';
 import OrderStatisticsScreen from '../containers/screens/OrdersScreen/OrderStatisticsScreen';
+import OrderHistoryScreen from '../containers/screens/OrdersScreen/OrderDetailsScreen';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -55,6 +57,11 @@ const AppStack = () => {
       <Stack.Screen
         name="OrdersStatisticsScreen"
         component={OrderStatisticsScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrderHistoryScreen"
+        component={OrderHistoryScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

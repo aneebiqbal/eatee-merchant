@@ -15,6 +15,11 @@ import SearchField from './SearchField'
 import OrdersStatisticsCard from './Orders/OrdersStatisticsCard'
 import PasswordConfrmation from './PasswordConfrmation'
 import OrderHistoryItem from './Orders/OrderHistoryItem'
+import Tracking from './Tracking'
+import MapsView from './MapsView'
+import CustomerDetailCard from './CustomerDetailCard'
+import RiderDetailsRowCard from './RiderDetailsRowCard'
+
 
 
 
@@ -35,5 +40,9 @@ export {
   OrdersStatisticsCard,
   MenuItem,
   SearchField,
-  OrderHistoryItem
+  OrderHistoryItem,
+  Tracking,
+  MapsView,
+  CustomerDetailCard,
+  RiderDetailsRowCard
 };

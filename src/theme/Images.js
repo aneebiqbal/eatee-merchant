@@ -24,5 +24,8 @@ export default {
   pendingOrders: require('../assets/images/pendingOrders.png'),
   totalOrders: require('../assets/images/totalOrders.png'),
   food: require('../assets/images/food.png'),
+  man2: require('../assets/images/man2.png'),
+  man3: require('../assets/images/man3.png'),
+
   
 };

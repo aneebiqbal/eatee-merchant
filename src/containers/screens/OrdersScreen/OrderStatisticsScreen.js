@@ -24,7 +24,7 @@ const OrderStatisticsScreen = ({navigation}) => {
         <View style={[styles.container, {justifyContent: 'center'}]}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 60, marginBottom: 10}}>
                 <OrdersStatisticsCard style={{width: 300, paddingVertical: 10, borderRadius: 8}} onPress={() => navigation.navigate('OrdersScreen')} image={Images.totalOrders} heading="Total Orders" label="7000"/>
-                <OrdersStatisticsCard style={{width: 300, paddingVertical: 10, borderRadius: 8}} image={Images.activeOrders} heading="Active Orders" label="7000"/>
+                <OrdersStatisticsCard style={{width: 300, paddingVertical: 10, borderRadius: 8}} onPress={() => navigation.navigate('OrderHistoryScreen')} image={Images.activeOrders} heading="Active Orders" label="7000"/>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between' , alignItems: 'center', margin: 70, marginBottom: 300 }}>
                 <OrdersStatisticsCard style={{width: 300, paddingVertical: 10, borderRadius: 8}} image={Images.pendingOrders} heading="Pending Orders" label="7000"/>
