@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 import {Colors, Fonts, Images} from '../../theme';
 import {HP} from '../../utils/responsive';
 import BackIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {FavouriteButton} from '.';
 import {Divider} from 'react-native-paper';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 const propTypes = {};
@@ -49,20 +46,7 @@ const Header = props => {
             />
           ) : null}
         </View>
-        {/* <View style={[styles.ml20]}>
-          {props.location ? (
-            <TouchableOpacity onPress={props.onOpen}>
-              <Text style={[styles.locHeading]}>
-                {props.selectedLocation?.label}
-              </Text>
-              <Text style={styles.location}>
-                {props.selectedLocation?.addressLine1}
-              </Text>
-            </TouchableOpacity>
-          ) : (
-            <Text style={[styles.titleStyle]}>{props.title}</Text>
-          )}
-        </View> */}
+        {props.title && <Text>{props.title}</Text>}
         <View style={styles.rightIcon}>
           <View>
             {props.user ? (
@@ -77,24 +61,8 @@ const Header = props => {
                 />
               </View>
             ) : null}
+            {props.right}
           </View>
-          {/* <View>
-            {props.cart ? (
-              <View style={styles.mr20}>
-                <Ionicons
-                  name="cart-outline"
-                  color={props.withoutBackground ? 'white' : 'black'}
-                  size={28}
-                  onPress={() =>
-                    totalItems > 0 && navigation.navigate('ItemListingScreen')
-                  }
-                />
-                <View style={styles.filledCart}>
-                  <Text style={Fonts.white}>{totalItems}</Text>
-                </View>
-              </View>
-            ) : null}
-          </View> */}
         </View>
       </View>
       {props.divider && <Divider style={styles.dividerMargin} />}
@@ -103,12 +71,11 @@ const Header = props => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:'black',
+    backgroundColor:'#0A0B0C',
     height: HP('8'),
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16
-    // justifyContent: 'space-between',
   },
   leftIcon: {
     alignItems: 'flex-end',
@@ -120,7 +87,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     fontSize: 16,
-    // fontFamily: family.boldText,
   },
   locHeading: {
     color: 'black',

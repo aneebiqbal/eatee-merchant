@@ -1,8 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Icon} from 'react-native-elements';
 import {ApplicationStyles, Colors, Fonts, Images} from '../../theme';
-import {HP} from '../../utils';
 
 const propTypes = {};
 
@@ -15,6 +13,7 @@ const ShadowCard = ({heading, image, style, onPress, children}) => {
         <Image
           source={image}
           style={styles.imgStyle}
+          resizeMode='contain'
         />
         <Text style={[Fonts.medium, styles.textStyle]}>
           {heading}

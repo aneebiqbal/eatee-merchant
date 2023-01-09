@@ -10,7 +10,8 @@ export const CaptionedText = ({
   textIcon,
   direction = 'column', // 'row' or 'column', default is column
   style,
-  textStyle
+  textStyle,
+  headingStyle
 }) => (
   <View style={[{
     flexDirection: direction,
@@ -20,7 +21,7 @@ export const CaptionedText = ({
         direction === 'row' ? { marginRight: 20 } : {},
     ]}>
       {headingIcon && <Icon name={headingIcon} type='simple-line-icon' size={20} style={{ marginRight: 10 }} />}
-      <Text style={[Fonts.bold]}>{heading}</Text>
+      <Text style={[Fonts.bold, headingStyle]}>{heading}</Text>
     </View>
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       {textIcon && <Icon name={textIcon} type='simple-line-icon' size={20}style={{ marginRight: 10 }} />}

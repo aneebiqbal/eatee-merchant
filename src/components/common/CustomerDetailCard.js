@@ -9,8 +9,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const CustomerDetailCard = () => {
   return (
-    <View style={{flex: 1, backgroundColor:'white',  marginTop: 20, marginLeft: 10, margin: 15,borderRadius: 7}}>
-        <View style={{ flexDirection: 'row',  alignItems:'center',  marginRight: 10,marginTop: 30, marginLeft: 20 }}>
+    <View style={{backgroundColor:'white', flex: 1}}>
+        <View style={{ flexDirection: 'row' }}>
             <Image
                 source={Images.man2}
                 style={{

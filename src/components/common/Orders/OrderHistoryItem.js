@@ -22,7 +22,7 @@ const OrderHistoryItem = ({
   total,
 }) => {
   return (
-    <ShadowCard style={{margin: 20, paddingHorizontal: 28}}>
+    <ShadowCard style={{margin: 10, paddingHorizontal: 28}}>
     <View style={{
       paddingVertical: 24,
       borderBottomColor: Colors.blackCoral,

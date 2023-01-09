@@ -19,9 +19,11 @@ import Tracking from './Tracking'
 import MapsView from './MapsView'
 import CustomerDetailCard from './CustomerDetailCard'
 import RiderDetailsRowCard from './RiderDetailsRowCard'
-
-
-
+import FiltersHeader from './FiltersHeader'
+import RastaurantDetailsSetting from './RastaurantDetailsSetting'
+import ServiceCharges from './ServiceCharges'
+import OrderDetailsCard from './OrderDetailsCard'
+import OrderDeatilsHeading from './OrderDeatilsHeading'
 
 export {
   InputField,
@@ -44,5 +46,10 @@ export {
   Tracking,
   MapsView,
   CustomerDetailCard,
-  RiderDetailsRowCard
+  RiderDetailsRowCard,
+  FiltersHeader,
+  RastaurantDetailsSetting,
+  ServiceCharges,
+  OrderDetailsCard,
+  OrderDeatilsHeading
 };

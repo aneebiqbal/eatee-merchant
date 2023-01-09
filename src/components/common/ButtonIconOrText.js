@@ -11,28 +11,36 @@ const ButtonIconOrText = ({
   label,
   onPress,
   style,
-  name,
+  iconName,
   color = 'white',
-  size = 20,
-  type,
-  buttonVariant // circle or default
+  iconSize = 20,
+  iconType,
+  buttonVariant, // circle or default
+  iconDirection = 'left'
 }) => {
+  const iconStyle = label && iconDirection === 'left' ? { marginRight: 16 } : { marginLeft: 16 }
+  const icon = (
+    iconName && iconType && (
+      <Icon name={iconName} type={iconType} color={color} size={iconSize} style={iconStyle}/>
+    )
+  )
+
   return (
     <TouchableOpacity onPress={onPress} style={[styles.container, style, buttonVariant === 'circle' ? styles.circle : {}]}>
-      {name && type && !label ? (
-        <Icon name={name} type={type} color={color} size={size} />
-      ) : (
-        <Text style={styles.labelText}>{label}</Text>
-      )}
+      {iconDirection === 'left' && icon}
+      {label && <Text style={styles.labelText}>{label}</Text>}
+      {iconDirection === 'right' && icon} 
     </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
     backgroundColor: Colors.primary,
+    padding: 16,
   },
   labelText: {
     color: 'white',

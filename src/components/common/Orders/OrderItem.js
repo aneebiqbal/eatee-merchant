@@ -31,7 +31,7 @@ const OrderItem = ({
   //todo
 }) => {
   return (
-    <ShadowCard style={{margin: 20, paddingHorizontal: 28}}>
+    <ShadowCard style={{margin: 20, paddingHorizontal: 28, borderRadius: 9}}>
       <View style={{
         paddingVertical: 24,
         borderBottomColor: Colors.blackCoral,
