@@ -14,7 +14,7 @@ const OrdersScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={{
-      backgroundColor: Colors.white,
+      backgroundColor: '#DDDDDD',
       flex: 1
     }}>
       <Header
@@ -54,7 +54,7 @@ const OrdersScreen = ({navigation}) => {
             price={'£ 36.00'} total={'Total'}
           />
           <OrderItem 
-            onPress={[openModal]}
+            onPress={openModal}
             image={Images.man}
             heading={'Soleh Anderson'} text={'View profile'}
             time={'13 min'} remainingTime={'Remaining time'}
@@ -81,7 +81,7 @@ const OrdersScreen = ({navigation}) => {
             price={'£ 36.00'} total={'Total'}
         />
       </ScrollView>
-      <OrderDetailsModal isVisible={showItemDetails} closeModal={closeModal} />
+      <OrderDetailsModal isVisible={showItemDetails} closeModal={closeModal} navigation={navigation} />
     </SafeAreaView>
   )
 }

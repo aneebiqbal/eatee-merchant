@@ -10,19 +10,13 @@ import DrawerScreen from '../containers/screens/DrawerScreen/DrawerScreen';
 import SigninScreen from '../containers/screens/AuthScreens/SigninScreen/SigninScreen';
 import PasswordConfirmationScreen from '../containers/screens/AuthScreens/PasswordConfirmationScreen/PasswordConfirmationScreen';
 import ResetPasswordScreen from '../containers/screens/AuthScreens/ResetPasswordScreens/ResetPasswordScreen';
-import HomeScreen from '../containers/screens/HomeScreen';
-import OrdersScreen from '../containers/screens/OrdersScreen';
-import InventoryScreen from '../containers/screens/InventoryScreen';
-import HistoryScreen from '../containers/screens/HistoryScreen';
-import MyAccountScreen from '../containers/screens/MyAccountScreen';
-import SettingsScreen from '../containers/screens/SettingsScreen';
 import BottomStack from './BottomStack';
 
 
 import {connect} from 'react-redux';
 import OrderStatisticsScreen from '../containers/screens/OrdersScreen/OrderStatisticsScreen';
 import OrderHistoryScreen from '../containers/screens/OrdersScreen/OrderDetailsScreen';
-
+import EditRestaurantDetails from '../containers/screens/SettingsScreen/EditRestaurantDetails';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -45,16 +39,6 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrdersScreen"
-        component={OrdersScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name="OrdersStatisticsScreen"
         component={OrderStatisticsScreen}
         options={{headerShown: false}}
@@ -65,23 +49,8 @@ const AppStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="InventoryScreen"
-        component={InventoryScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HistoryScreen"
-        component={HistoryScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="MyAccountScreen"
-        component={MyAccountScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
+        name="EditRestaurantDetails"
+        component={EditRestaurantDetails}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

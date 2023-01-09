@@ -2,13 +2,10 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import PropTypes from 'prop-types';
 import { styles } from './styles';
-import { CustomerDetailCard, Header, MapsView, RiderDetailsRowCard, Tracking } from '../../../components/common';
-import { Colors } from '../../../theme';
-import MapView from 'react-native-maps';
+import { ButtonIconOrText, CustomerDetailCard, FiltersHeader, Header, MapsView, OrderDeatilsHeading, OrderDetailsCard, RiderDetailsRowCard, Tracking } from '../../../components/common';
+import { Colors, Images } from '../../../theme';
 
-
-
-const propTypes = {
+  const propTypes = {
     navigation: PropTypes.shape({
       replace: PropTypes.func.isRequired,
     }).isRequired,
@@ -20,23 +17,43 @@ const OrderDetailsScreen = ({navigation}) => {
   return (
     <SafeAreaView style={[styles.container,{backgroundColor: Colors.lightGra}]}>
         <Header
-            left
-            user
+          logo
+          user
         />
-        <View style={{flexDirection:'row', backgroundColor: Colors.white}}>
-            <Tracking />
+        <Header
+          left
+          title={<View style={{ flexDirection: 'column', paddingLeft: 50}}><Text style={{color: 'white'}}>Order no: 1675757</Text><Text style={{color: 'white'}}>ORDER DETAILS</Text></View>}
+          right={(
+            <ButtonIconOrText
+              label={'On the way'}
+              iconDirection='right'
+              iconName='chevron-down'
+              iconType='material-community'
+              iconSize={30}
+              onPress={() => {
+
+              }}
+              style={{ height: 58, backgroundColor: '#0EBE7E' }}
+            />
+          )}
+        />
+        <View style={{flexDirection:'row', backgroundColor: Colors.white, margin: 16}}>
+          <Tracking />
         </View>
-        <View style={{flexDirection: 'row', justifyContent:'space-between', flex: 1}}>
-            <View style={{flex: 0.5, height: '38%', width: '60%', marginTop: 24, marginLeft: 10, backgroundColor:'white', padding: 10, borderRadius: 10}}>
+        <View style={{flexDirection: 'row', marginHorizontal: 16, justifyContent: 'space-between' }}>
+            <View style={{height: 300, width: '49%', backgroundColor: 'white', padding: 16, borderRadius: 8}}>
               <MapsView/>
             </View>
-            <View style={{flex: 0.5, height: '42%', width: '60%', margin: 1, padding: 1}}>
+            <View style={{height: 300, width: '49%', backgroundColor: 'white', padding: 16, borderRadius: 8}}>
               <CustomerDetailCard/>
             </View>
         </View>
-        {/* <View style={{marginBottom: 5}}>
+        <View style={{margin: 16}}>
           <RiderDetailsRowCard/>
-        </View> */}
+        </View>
+
+        <OrderDeatilsHeading/>
+        <OrderDetailsCard/>
     </SafeAreaView>
   )
 }

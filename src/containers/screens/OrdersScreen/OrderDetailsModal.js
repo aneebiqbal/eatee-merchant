@@ -7,7 +7,7 @@ import { Divider } from 'react-native-paper';
 import { CaptionedText } from '../../../components/common/CaptionedText';
 
 
-const OrderDetailsModal = ({isVisible, closeModal}) => {
+const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
   return (
     <Modal 
       isVisible={isVisible} 
@@ -71,7 +71,7 @@ const OrderDetailsModal = ({isVisible, closeModal}) => {
             <Text style={[Fonts.bold, Fonts.small]}>Total</Text>
             <Text style={[Fonts.bold, Fonts.small, { color: Colors.primary }]}>$ 12</Text>
           </View>
-          <FullwidthButton label='Track Order Details'/>
+          <FullwidthButton label='Track Order Details' onPress= {() => navigation.navigate('OrderHistoryScreen')}/>
         </View>
       </View>
       </SafeAreaView>

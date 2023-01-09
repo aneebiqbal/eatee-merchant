@@ -6,10 +6,7 @@ import { Colors, Images } from '../../../theme';
 
 const HistoryScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{
-      backgroundColor: Colors.white,
-      flex: 1
-    }}>
+    <SafeAreaView style={{backgroundColor: '#DDDDDD', flex: 1}}>
         <Header
             user
             left
@@ -52,37 +49,37 @@ const HistoryScreen = ({navigation}) => {
         />
       </View>
       <ScrollView>
-      <OrderHistoryItem 
-         onPress={{}}
-         image={Images.food}
-         heading={'Salmon/Shake Dragon'} text={'4 more items'}
-         quantity={'4X'}
-         cash={'Cash'} Payment={'Payment'}
-         price={'£ 36.00'} total={'Total'}
+        <OrderHistoryItem 
+          onPress={{}}
+          image={Images.food}
+          heading={'Salmon/Shake Dragon'} text={'4 more items'}
+          quantity={'4X'}
+          cash={'Cash'} Payment={'Payment'}
+          price={'£ 36.00'} total={'Total'}
+       />
+        <OrderHistoryItem 
+          onPress={{}}
+          image={Images.food}
+          heading={'Salmon/Shake Dragon'} text={'4 more items'}
+          quantity={'4X'}
+          cash={'Cash'} Payment={'Payment'}
+          price={'£ 36.00'} total={'Total'}
+       />
+        <OrderHistoryItem 
+          onPress={{}}
+          image={Images.food}
+          heading={'Salmon/Shake Dragon'} text={'4 more items'}
+          quantity={'4X'}
+          cash={'Cash'} Payment={'Payment'}
+          price={'£ 36.00'} total={'Total'}
         />
         <OrderHistoryItem 
-         onPress={{}}
-         image={Images.food}
-         heading={'Salmon/Shake Dragon'} text={'4 more items'}
-         quantity={'4X'}
-         cash={'Cash'} Payment={'Payment'}
-         price={'£ 36.00'} total={'Total'}
-        />
-        <OrderHistoryItem 
-         onPress={{}}
-         image={Images.food}
-         heading={'Salmon/Shake Dragon'} text={'4 more items'}
-         quantity={'4X'}
-         cash={'Cash'} Payment={'Payment'}
-         price={'£ 36.00'} total={'Total'}
-        />
-        <OrderHistoryItem 
-         onPress={{}}
-         image={Images.food}
-         heading={'Salmon/Shake Dragon'} text={'4 more items'}
-         quantity={'4X'}
-         cash={'Cash'} Payment={'Payment'}
-         price={'£ 36.00'} total={'Total'}
+          onPress={{}}
+          image={Images.food}
+          heading={'Salmon/Shake Dragon'} text={'4 more items'}
+          quantity={'4X'}
+          cash={'Cash'} Payment={'Payment'}
+          price={'£ 36.00'} total={'Total'}
         />
       </ScrollView> 
 </SafeAreaView>
