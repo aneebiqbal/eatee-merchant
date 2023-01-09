@@ -26,6 +26,23 @@ export default {
   food: require('../assets/images/food.png'),
   man2: require('../assets/images/man2.png'),
   man3: require('../assets/images/man3.png'),
-
+  pencil: require('../assets/images/pencil.png'),
   
+  currency: require('../assets/images/currency.png'),
+  orderLimit: require('../assets/images/orderLimit.png'),
+  restaurantDetails: require('../assets/images/restaurantDetails.png'),
+  serviceCharges: require('../assets/images/serviceCharges.png'),
+  timings: require('../assets/images/timmings.png'),
+  ok: require('../assets/images/ok.png'),
+  deal: require('../assets/images/deal.png'),
+  category: require('../assets/images/category.png'),
+  addons: require('../assets/images/addons.png'),
+  menu: require('../assets/images/menu.png'),
+  statistics: require('../assets/images/statistics.png'),
+  allOrders: require('../assets/images/allOrders.png'),
+  beefBurger: require('../assets/images/beefBurger.png'),
+  rating: require('../assets/images/rating.png'),
+  changePassword: require('../assets/images/changePassword.png'),
+  myDetails: require('../assets/images/myDetails.png'),
+
 };
