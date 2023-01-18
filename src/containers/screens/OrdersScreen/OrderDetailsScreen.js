@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView } from 'react-native'
 import React from 'react'
 import PropTypes from 'prop-types';
 import { styles } from './styles';
@@ -16,6 +16,7 @@ import { Colors, Images } from '../../../theme';
 const OrderDetailsScreen = ({navigation}) => {
   return (
     <SafeAreaView style={[styles.container,{backgroundColor: Colors.lightGra}]}>
+      <ScrollView>
         <Header
           logo
           user
@@ -48,12 +49,16 @@ const OrderDetailsScreen = ({navigation}) => {
               <CustomerDetailCard/>
             </View>
         </View>
-        <View style={{margin: 16}}>
+        {/* <View style={{margin: 16}}>
           <RiderDetailsRowCard/>
-        </View>
+        </View> */}
 
         <OrderDeatilsHeading/>
         <OrderDetailsCard/>
+        <OrderDetailsCard/>
+        <OrderDetailsCard/>
+        <OrderDetailsCard/>
+      </ScrollView>
     </SafeAreaView>
   )
 }
