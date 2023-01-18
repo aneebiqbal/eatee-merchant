@@ -27,7 +27,7 @@ export default {
   man2: require('../assets/images/man2.png'),
   man3: require('../assets/images/man3.png'),
   pencil: require('../assets/images/pencil.png'),
-  
+  cross: require('../assets/images/cross.png'),
   currency: require('../assets/images/currency.png'),
   orderLimit: require('../assets/images/orderLimit.png'),
   restaurantDetails: require('../assets/images/restaurantDetails.png'),
