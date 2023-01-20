@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements'
 import SearchField from './SearchField'
 import ButtonIconOrText from './ButtonIconOrText'
 
-const InventoryMenu = () => {
+const InventoryMenu = ({navigation}) => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
@@ -32,6 +32,7 @@ const InventoryMenu = () => {
             iconDirection="right"
             iconName={'plus'}
             iconType={'Entypo'}
+            onPress={() => navigation.navigate('CreateNewMenuScreen')}
           />
         </View>
 

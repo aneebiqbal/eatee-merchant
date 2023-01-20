@@ -5,7 +5,7 @@ import { FiltersHeader, Header, InventoryCategory, InventoryMenu } from '../../.
 import { Images } from '../../../theme';
 
 
-const InventoryScreen = () => {
+const InventoryScreen = ({navigation}) => {
   const [currentTab, setCurrentTab] = useState(0)
 
   const filterItems = [
@@ -25,7 +25,7 @@ const InventoryScreen = () => {
         />
         <View style={styles.container}>
             {currentTab === 0 && <InventoryCategory/>}
-            {currentTab === 1 && <InventoryMenu/>}
+            {currentTab === 1 && <InventoryMenu navigation={navigation}/>}
             {currentTab === 2 && <Text>Tab 2</Text>}
             {currentTab === 3 && <Text>Tab 3</Text>}
             {currentTab === 4 && <Text>Tab 4</Text>}
