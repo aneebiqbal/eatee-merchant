@@ -24,6 +24,9 @@ import RastaurantDetailsSetting from './RastaurantDetailsSetting'
 import ServiceCharges from './ServiceCharges'
 import OrderDetailsCard from './OrderDetailsCard'
 import OrderDeatilsHeading from './OrderDeatilsHeading'
+import PaginatedList from './PaginatedList'
+import InventoryCategory from './InventoryCategory'
+import InventoryMenu from './InventoryMenu'
 
 export {
   InputField,
@@ -51,5 +54,8 @@ export {
   RastaurantDetailsSetting,
   ServiceCharges,
   OrderDetailsCard,
-  OrderDeatilsHeading
+  OrderDeatilsHeading,
+  PaginatedList,
+  InventoryCategory,
+  InventoryMenu
 };

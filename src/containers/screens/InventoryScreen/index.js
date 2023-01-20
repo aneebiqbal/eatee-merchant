@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, } from 'react-native'
 import React, { useState } from 'react'
 import {styles} from './styles';
-import { FiltersHeader, Header } from '../../../components/common';
+import { FiltersHeader, Header, InventoryCategory, InventoryMenu } from '../../../components/common';
 import { Images } from '../../../theme';
 
 
@@ -24,8 +24,8 @@ const InventoryScreen = () => {
           items={filterItems}
         />
         <View style={styles.container}>
-            {currentTab === 0 && <Text>Tab 0</Text>}
-            {currentTab === 1 && <Text>Tab 1</Text>}
+            {currentTab === 0 && <InventoryCategory/>}
+            {currentTab === 1 && <InventoryMenu/>}
             {currentTab === 2 && <Text>Tab 2</Text>}
             {currentTab === 3 && <Text>Tab 3</Text>}
             {currentTab === 4 && <Text>Tab 4</Text>}
