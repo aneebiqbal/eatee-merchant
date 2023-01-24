@@ -1,35 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Colors, Fonts, Images} from '../../../theme';
 import ShadowCard from '../ShadowCard';
 import { CaptionedText } from '../CaptionedText';
 import Tag from '../Tag';
+import OrderDetailsModal from '../../../containers/screens/OrdersScreen/OrderDetailsModal';
 
 const propTypes = {};
 
 const defaultProps = {};
 
 const OrderItem = ({
-  image,
-  heading,
-  text,
-  quantity,
   onPress,
-  pickup,
-  service,
-  cash,
-  Payment,
-  time,
-  remainingTime,
-  price,
-  total,
-  icon,
-  item,
-  menu,
-
-  //todo
+  order,
+  navigation
 }) => {
+  const [showItemDetails, setShowItemDetails] = useState(false);
+  const closeModal = () => setShowItemDetails(false)
+  const openModal = () => setShowItemDetails(true)
+
   return (
     <ShadowCard style={{margin: 20, paddingHorizontal: 28, borderRadius: 9}}>
       <View style={{
@@ -43,12 +33,12 @@ const OrderItem = ({
       }}>
         <View style={{alignItems: 'center', flexDirection: 'row'}}>
           <Text style={{ paddingRight: 10}}>
-            ORDER ID #<Text style={[, Fonts.bold]}>68767676867</Text>
+            ORDER ID #<Text style={[, Fonts.bold]}>{order?.id}</Text>
           </Text>
-          <Tag text='Ready' type={'success'}/>
+          <Tag text= {order.orderStatus} type={'success'}/>
         </View>
         <View style={{ flexDirection: 'row'}}>
-          <Text>Create date & time:</Text><Text>27-09-2021, 03:12 PM</Text>
+          <Text>Create date & time: </Text><Text>{order.createdOnText}</Text>
         </View>
       </View>
       <View
@@ -68,7 +58,7 @@ const OrderItem = ({
             flexDirection: 'row',
           }}>
             <Image 
-              source={image} 
+              source={Images.man} 
               style={{
                 width: 36,
                 height: 36,
@@ -76,17 +66,18 @@ const OrderItem = ({
                 borderRadius: 50
               }}
             />
-            <CaptionedText heading={heading} text={text} />
+            <CaptionedText heading={'heading'} text={'text'} />
           </View>
-          <CaptionedText heading={time} text={remainingTime} headingIcon={'clock'}/>
-          <CaptionedText heading={pickup} text={service} />
-          <CaptionedText heading={cash} text={Payment} />
-          <CaptionedText heading={price} text={total} />
+          <CaptionedText heading={'pickup'} text={'service'} />
+          <CaptionedText heading={order.paymentMethod ?? 'Cash'} text={'Payment'} />
+          <CaptionedText heading={order.totalAmount} text={'total'} />
         </View>
-        <TouchableOpacity onPress={onPress}>
+
+        <TouchableOpacity onPress={openModal}>
           <Icon name='dots-horizontal' type='material-community' color={Colors.primary} size={28} />
         </TouchableOpacity>
       </View>
+      <OrderDetailsModal isVisible={showItemDetails} closeModal={closeModal} navigation={navigation} order={order}/>
     </ShadowCard>
   )
 }

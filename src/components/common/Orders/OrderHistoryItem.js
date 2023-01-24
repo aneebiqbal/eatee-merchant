@@ -12,15 +12,11 @@ const defaultProps = {};
 
 const OrderHistoryItem = ({
   image,
-  heading,
-  text,
-  quantity,
   onPress,
-  cash,
-  Payment,
-  price,
-  total,
+  order
 }) => {
+  console.log(order)
+  debugger;
   return (
     <ShadowCard style={{margin: 10, paddingHorizontal: 28}}>
     <View style={{
@@ -34,12 +30,12 @@ const OrderHistoryItem = ({
     }}>
       <View style={{alignItems: 'center', flexDirection: 'row'}}>
         <Text style={{ paddingRight: 10}}>
-          ORDER ID #<Text style={[, Fonts.bold]}>68767676867</Text>
+          ORDER ID #<Text style={[, Fonts.bold]}>{order.id}</Text>
         </Text>
-        <Tag text='Ready' type={'success'}/>
+        <Tag text= {order.orderStatus} type={'success'}/>
       </View>
       <View style={{ flexDirection: 'row'}}>
-        <Text>Create date & time:</Text><Text>27-09-2021, 03:12 PM</Text>
+        <Text>Create date & time: </Text><Text>{order.createdOnText}</Text>
       </View>
     </View>
     <View
@@ -66,11 +62,26 @@ const OrderHistoryItem = ({
               marginRight: 16,
             }}
           />
-          <CaptionedText heading={heading} text={text} />
+          {
+            order?.items.map((item, index) => {
+              return (
+              <CaptionedText key={index} heading={item.name} text={'4 more items'} />
+              )
+            })
+          }
         </View>
-        <CaptionedText heading={quantity} />
-        <CaptionedText heading={cash} text={Payment} />
-        <CaptionedText heading={price} text={total} />
+        {
+          order?.items.map((item, index) => {
+            return (
+              <>
+              <CaptionedText heading={item.quantity} key={index}/>
+              <CaptionedText heading={order.paymentMethod ?? 'Cash'} text={'Payment'} />
+              <CaptionedText heading={item?.price} text={'total'} />
+             </>
+            )
+          })
+        }
+        
       </View>
       <TouchableOpacity onPress={onPress}>
         <Icon name='menu-right' type='material-community' color={Colors.primary} size={28} />

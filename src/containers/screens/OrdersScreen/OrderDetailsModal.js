@@ -1,5 +1,5 @@
 import { View, SafeAreaView, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { FullwidthButton, MenuItem, Tag } from '../../../components/common';
 import { Colors, Fonts } from '../../../theme';
 import Modal from "react-native-modal";
@@ -7,7 +7,14 @@ import { Divider } from 'react-native-paper';
 import { CaptionedText } from '../../../components/common/CaptionedText';
 
 
-const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
+const OrderDetailsModal = ({
+  isVisible,
+  closeModal,
+  navigation,
+  order
+}) => {
+  console.log(order)
+
   return (
     <Modal 
       isVisible={isVisible} 
@@ -28,13 +35,16 @@ const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
             justifyContent: 'space-between',
             paddingVertical: 20
           }}>
-            <CaptionedText heading='73743436' text='Order ID #' />
-            <CaptionedText heading='Payment Type:' text='Cash' direction='row' textStyle={[Fonts.bold, {color: Colors.primary}]}/>
+            <CaptionedText heading={order.id} text='Order ID #'/>
+            <CaptionedText heading='Payment Type:' text={order.paymentMethod ?? 'Cash'} direction='row' textStyle={[Fonts.bold, {color: Colors.primary}]}/>
           </View>
           <Divider/>
-          <MenuItem/>
-          <MenuItem/>
-          <MenuItem/>
+
+          {order.items.map((item, index) => {
+            return (
+              <MenuItem item ={item} key={index}/>
+            )
+          })}
         </View>
         <View>
           <View style={{
@@ -43,7 +53,7 @@ const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
             paddingVertical: 20
           }}>
             <Text>Type</Text>
-            <Tag text='Delivery' />
+            <Tag text={order?.orderStatus} />
           </View>
 
           <View style={{
@@ -60,7 +70,7 @@ const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
             paddingVertical: 20
           }}>
             <Text>Tax</Text>
-            <Text>$ 12</Text>
+            <Text>$ {order.totalAmount}</Text>
           </View>
           <Divider/>
           <View style={{
@@ -69,9 +79,9 @@ const OrderDetailsModal = ({isVisible, closeModal, navigation}) => {
             paddingVertical: 20
           }}>
             <Text style={[Fonts.bold, Fonts.small]}>Total</Text>
-            <Text style={[Fonts.bold, Fonts.small, { color: Colors.primary }]}>$ 12</Text>
+            <Text style={[Fonts.bold, Fonts.small, { color: Colors.primary }]}>$ {order?.totalAmount}</Text>
           </View>
-          <FullwidthButton label='Track Order Details' onPress= {() => navigation.navigate('OrderHistoryScreen')}/>
+          <FullwidthButton label='Track Order Details' onPress= {() => navigation.navigate('OrderHistoryScreen', { order })}/>
         </View>
       </View>
       </SafeAreaView>

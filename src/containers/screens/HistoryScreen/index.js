@@ -1,10 +1,46 @@
 import { View, Text, SafeAreaView, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {styles} from './styles';
-import { ButtonIconOrText, Header, OrderHistoryItem, OrderItem, SearchField } from '../../../components/common';
+import { ButtonIconOrText, Header, OrderHistoryItem, OrderItem, PaginatedList, SearchField, Spinner } from '../../../components/common';
 import { Colors, Images } from '../../../theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOrderHistory, orderHistoryResetStates } from '../../../actions/OrderHistoryAction';
+import { OrderStatus } from '../OrdersScreen';
+import Status from '../../../constants/status';
 
 const HistoryScreen = ({navigation}) => {
+  const [searchText, setSearchText, getSearchText] = useState('');
+  const [orderStatusTypeId, setOrderStatusTypeId] = useState(OrderStatus.InProgress);
+
+  const dispatch = useDispatch();
+
+  const {
+    user: {accessToken},
+  } = useSelector(({AccountState}) => AccountState);
+
+  useEffect(() => {
+    dispatch(
+      fetchOrderHistory(accessToken, {
+        page: 0,
+        limit: 0,
+        totalCount: 0,
+        orderStatusTypeId: orderStatusTypeId,
+      }),
+    );
+    return () => dispatch(orderHistoryResetStates());
+  }, [accessToken, dispatch, searchText, orderStatusTypeId]);
+  
+  const {ordersStatus, ordersMeta, orders} = useSelector(
+    ({OrderHistoryState}) => OrderHistoryState,
+  );
+
+  const renderOrderHistoryItem = ({ item }) => {
+    console.log(item)
+    return (<OrderHistoryItem 
+      order={item}
+      navigation={navigation}
+    />)
+  }
   return (
     <SafeAreaView style={{backgroundColor: '#DDDDDD', flex: 1}}>
         <Header
@@ -17,10 +53,17 @@ const HistoryScreen = ({navigation}) => {
           backgroundColor: '#1A1E22',
           justifyContent: 'center',
         }}>
-          <ButtonIconOrText label={'All'} buttonVariant={'circle'} style={{ marginVertical: 20, marginHorizontal: 6, width: '17%' }}/>
-          <ButtonIconOrText label={'Pending'} buttonVariant={'circle'} style={{ marginVertical: 20,  marginHorizontal: 6, width: '17%' }} />
-          <ButtonIconOrText label={'Completed'} buttonVariant={'circle'} style={{ marginVertical: 20, marginHorizontal: 6, width: '17%' }} />
-          <ButtonIconOrText label={'Cancelled'} buttonVariant={'circle'} style={{ marginVertical: 20, marginHorizontal: 6, width: '17%' }} />
+          {
+            ['All', 'InProgress', 'Completed', 'Cancelled'].map((filterLabel)=> (
+              <ButtonIconOrText label={filterLabel} 
+              backgroundColor={OrderStatus[filterLabel] === orderStatusTypeId ? Colors.primary : Colors.lightGra}
+              onPress={()=> {
+                setOrderStatusTypeId(OrderStatus[filterLabel])
+              }} 
+              buttonVariant={'circle'} 
+              style={{ marginVertical: 28, marginHorizontal: 4, width: '19%' }}
+            />))
+          }
         </View>
         <View 
         style={{
@@ -48,40 +91,17 @@ const HistoryScreen = ({navigation}) => {
           placeholder='Date'
         />
       </View>
-      <ScrollView>
-        <OrderHistoryItem 
-          onPress={{}}
-          image={Images.food}
-          heading={'Salmon/Shake Dragon'} text={'4 more items'}
-          quantity={'4X'}
-          cash={'Cash'} Payment={'Payment'}
-          price={'£ 36.00'} total={'Total'}
-       />
-        <OrderHistoryItem 
-          onPress={{}}
-          image={Images.food}
-          heading={'Salmon/Shake Dragon'} text={'4 more items'}
-          quantity={'4X'}
-          cash={'Cash'} Payment={'Payment'}
-          price={'£ 36.00'} total={'Total'}
-       />
-        <OrderHistoryItem 
-          onPress={{}}
-          image={Images.food}
-          heading={'Salmon/Shake Dragon'} text={'4 more items'}
-          quantity={'4X'}
-          cash={'Cash'} Payment={'Payment'}
-          price={'£ 36.00'} total={'Total'}
-        />
-        <OrderHistoryItem 
-          onPress={{}}
-          image={Images.food}
-          heading={'Salmon/Shake Dragon'} text={'4 more items'}
-          quantity={'4X'}
-          cash={'Cash'} Payment={'Payment'}
-          price={'£ 36.00'} total={'Total'}
-        />
-      </ScrollView> 
+      {ordersStatus === Status.LOADING && !orders.length ? (
+          <Spinner />
+        ) : (
+          <PaginatedList
+            data={orders}
+            renderer={renderOrderHistoryItem}
+            meta={ordersMeta}
+            fetchMore={() => fetchMore(fetchOrderHistory, ordersMeta)}
+            loading={ordersStatus === Status.LOADING}
+          />
+        )}
 </SafeAreaView>
   )
 }

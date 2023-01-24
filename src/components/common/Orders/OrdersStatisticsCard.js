@@ -27,7 +27,6 @@ const OrdersStatisticsCard = ({heading, label, image, style, onPress, children})
           width: 120,
           position: 'absolute',
           left: -60
-
         }}
       /> 
     </View>}

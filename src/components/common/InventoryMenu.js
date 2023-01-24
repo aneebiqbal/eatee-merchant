@@ -45,18 +45,18 @@ const InventoryMenu = ({navigation}) => {
                     width: 40,
                   }}
               />
-              <View style={{ flexDirection:"column", left: 10}}>
+              <View style={{ flexDirection:"column", paddingLeft: 10}}>
                 <Text style={{width: 160, color: '#F33810', fontWeight: '700', fontSize: 14}}>Salmon/Shake Dragon</Text>
                 <Text>Extra Spicy</Text>
               </View>
             </View>
 
-            <View style={{ flexDirection:"column", right: 10 }}>
+            <View style={{ flexDirection:"column" }}>
               <Text style={{width: 110, fontWeight: '600', fontSize: 14}}>Cheese</Text>
               <Text>Category name</Text>
             </View>
 
-            <View style={{ flexDirection:"column", left:5 }}>
+            <View style={{ flexDirection:"column"}}>
               <Text style={{width: 160, fontWeight: '600', fontSize: 14}}>Cheese</Text>
               <Text>Category name</Text>
             </View>

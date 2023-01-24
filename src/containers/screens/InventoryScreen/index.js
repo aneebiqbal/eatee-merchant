@@ -8,6 +8,7 @@ import { Images } from '../../../theme';
 const InventoryScreen = ({navigation}) => {
   const [currentTab, setCurrentTab] = useState(0)
 
+
   const filterItems = [
     { title: 'Category', image: Images.category, onClick: () => setCurrentTab(0),},
     { title: 'Menu', image: Images.menu, onClick: () => setCurrentTab(1),},    

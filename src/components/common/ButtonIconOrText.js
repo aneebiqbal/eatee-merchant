@@ -16,7 +16,8 @@ const ButtonIconOrText = ({
   iconSize = 20,
   iconType,
   buttonVariant, // circle or default
-  iconDirection = 'left'
+  iconDirection = 'left',
+  backgroundColor
 }) => {
   const iconStyle = label && iconDirection === 'left' ? { marginRight: 16 } : { marginLeft: 16 }
   const icon = (
@@ -26,7 +27,13 @@ const ButtonIconOrText = ({
   )
 
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.container, style, buttonVariant === 'circle' ? styles.circle : {}]}>
+    <TouchableOpacity onPress={onPress} 
+      style={[
+        styles.container, 
+        style, 
+        buttonVariant === 'circle' ? styles.circle : {}, 
+        backgroundColor ? { backgroundColor: backgroundColor } : {}]
+      }>
       {iconDirection === 'left' && icon}
       {label && <Text style={styles.labelText}>{label}</Text>}
       {iconDirection === 'right' && icon} 

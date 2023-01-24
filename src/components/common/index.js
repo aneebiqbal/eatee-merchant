@@ -22,11 +22,10 @@ import RiderDetailsRowCard from './RiderDetailsRowCard'
 import FiltersHeader from './FiltersHeader'
 import RastaurantDetailsSetting from './RastaurantDetailsSetting'
 import ServiceCharges from './ServiceCharges'
-import OrderDetailsCard from './OrderDetailsCard'
-import OrderDeatilsHeading from './OrderDeatilsHeading'
 import PaginatedList from './PaginatedList'
 import InventoryCategory from './InventoryCategory'
 import InventoryMenu from './InventoryMenu'
+import TableRow from './TableRow'
 
 export {
   InputField,
@@ -53,9 +52,8 @@ export {
   FiltersHeader,
   RastaurantDetailsSetting,
   ServiceCharges,
-  OrderDetailsCard,
-  OrderDeatilsHeading,
   PaginatedList,
   InventoryCategory,
-  InventoryMenu
+  InventoryMenu,
+  TableRow
 };

@@ -10,6 +10,8 @@ const defaultProps = {};
 
 const MenuItem = ({
   //TODO
+  item,
+  key
 }) => {
   return (
     <>
@@ -32,12 +34,30 @@ const MenuItem = ({
           <View
             style={{ flexDirection: 'column' }}
           >
-            <Text style={[Fonts.bold]}>Beef Burger</Text>
+            <Text style={[Fonts.bold]}>{item?.name}</Text>
             <Text>Lorem ipsum dolor sit amet, consecte</Text>
+            {/* <View style={{flexDirection: 'row', justifyContent: 'space-between',alignItems: 'center', paddingVertical: 10,}}> */}
+            {
+            item.addons.map((addon, index)=> {
+              return (
+                <>
+                <View key={index} style={{flexDirection:'row', justifyContent: 'space-between', marginTop: 10}}>
+                  <Text style={[Fonts.bold]}>{addon?.name}</Text>
+                  <Text style={[Fonts.bold, { color: Colors.primary}]}> ${addon?.price}</Text> 
+                </View>
+               
+                </>
+              )
+            })
+          }       
+            {/* </View> */}
+
           </View>
         </View>
-        <Text style={[Fonts.bold, { color: Colors.primary }]}>£ 12</Text>
-      </View>
+        <View style={{flexDirection:"column", alignItems:"center", }}>  
+         <Text style={[Fonts.bold, { color: Colors.primary, marginBottom: 20 }]}>${item?.price}</Text>
+        </View>
+      </View>     
       <Divider/>
     </>
   )

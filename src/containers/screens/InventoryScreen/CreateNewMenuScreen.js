@@ -49,35 +49,32 @@ const CreateNewMenuScreen = () => {
                         <Image
                             source={Images.cross2}
                             style={{
-                                height: 30,
-                                width: 30
+                                height: 40,
+                                width: 40
                             }}
                         />
                     </TouchableOpacity>
              </View>
             );
-          });
+        });
   }
     return (
-    <SafeAreaView style={{flexDirection:'column'}}>
+    <SafeAreaView style={{flexDirection:'column',}}>
       <Header
             user
             left
         />
-        <View style={{margin: 30}}>
+        <View style={{margin:30, flexDirection:'column', alignItems:'flex-start'}}>
             <Text style={{fontWeight: '700', fontSize: 24}}>Add Item</Text>
         </View>
 
         <View
             style={[ApplicationStyles.shadow,{
-                position: 'absolute',
-                width: 760,
-                height: 850,
-                left: 25,
-                top: 180,
                 backgroundColor: '#FFFFFF',
                 shadowRadius: 5,
                 borderRadius: 6,
+                marginHorizontal: 20,
+                paddingBottom: 30
             }]}
         >
             <View style={{flexDirection:"row", margin: 20}}>
@@ -120,15 +117,15 @@ const CreateNewMenuScreen = () => {
                 </View>
             </View>
             <View style={{marginHorizontal: 20, bottom: 90, width: 400}}>
-                <Text>Description</Text>
-                <TextInput
-                    multiline={true}
-                    numberOfLines={4}
-                    placeholder="Food"
-                    placeholderStyle={{ top: 0, left: 0, position: 'absolute' }}
-                    style={{height: 90, width: 400, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
-                    //onChangeText={(text) => console.log(text)}
-                />
+               <Text>Description</Text>
+               <TextInput
+                  multiline={true}
+                  numberOfLines={4}
+                  placeholder="Food"
+                  placeholderStyle={{ top: 0, left: 0, position: 'absolute' }}
+                  style={{height: 90, width: 400, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
+                  //onChangeText={(text) => console.log(text)}
+               />
             </View>
 
             <View style={{ bottom: 30, marginHorizontal: 20, flexDirection:'column'}}>
@@ -136,43 +133,42 @@ const CreateNewMenuScreen = () => {
                     <Text style={{
                         fontWeight: '700',
                         fontSize: 22,
-                    }}>Item Details</Text>
+                     }}>Item Details
+                    </Text>
                     <TouchableOpacity onPress={()=>{addItemDetail()}}>
                         <Image
-                            source={Images.plus}
-                            style={{
-                                left: 10,
-                                height: 30,
-                                width: 30
-                            }}
+                           source={Images.plus}
+                           style={{
+                              left: 10,
+                              height: 30,
+                              width: 30
+                           }}
                         />
                     </TouchableOpacity>
                     
                 </View>
-                {renderItemDetail()}
-                
+                {renderItemDetail()}  
             </View>
 
-            <View style={{flexDirection:'row', justifyContent:"flex-end", marginHorizontal: 22}}>
-            <ButtonIconOrText
-                    label={'Cancel'}
-                    style={{
-                        height: 53,
-                        width: 170,
-                        marginHorizontal: 10,
-                        backgroundColor:'#FFC018',
-                    }}
-                />
+            <View style={{flexDirection:'row', justifyContent: 'flex-start', marginHorizontal: 22}}>
                 <ButtonIconOrText
-                    label={'Save Changes'}
-                    style={{
-                        height: 53,
-                        width: 170
-                    }}
-                />
+                        label={'Cancel'}
+                        style={{
+                            height: '100%',
+                            width: '20%',
+                            marginHorizontal: 5,
+                            backgroundColor:'#FFC018',
+                        }}
+                    />
+                    <ButtonIconOrText
+                        label={'Save Changes'}
+                        style={{
+                            height: '100%',
+                            width: '20%'
+                        }}
+                    />
             </View>
         </View>
-        
     </SafeAreaView>
   )
 }
