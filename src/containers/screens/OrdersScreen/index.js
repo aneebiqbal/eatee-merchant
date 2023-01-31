@@ -8,6 +8,7 @@ import { fetchOrderHistory, orderHistoryResetStates } from '../../../actions/Ord
 import { useSelector } from 'react-redux';
 import Status from '../../../constants/status';
 import { useDispatch } from 'react-redux';
+import { styles } from './styles';
 
 export const OrderStatus = Object.freeze({
   InProgress: 1,
@@ -53,30 +54,17 @@ const OrdersScreen = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView style={{
-      backgroundColor: '#DDDDDD',
-      flex: 1
-    }}>
+    <SafeAreaView style={styles.orderContainer}>
       <Header
         user
         left
         navigation={navigation}
       />
       <View 
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}
+        style={styles.childContainer}
       >
-        <SearchField style={{
-          margin: 20,
-          width: '30%',
-          height: 48,
-          borderRadius: 48
-        }} onChange={()=>console.log('test')}/>
-        <View style={{
-          flexDirection: 'row'
-        }}>
+        <SearchField style={styles.searchField} onChange={()=>console.log('test')}/>
+        <View style={styles.filterStyle}>
           {
             ['All', 'InProgress', 'Completed', 'Cancelled'].map((filterLabel)=> (
               <ButtonIconOrText label={filterLabel} 
@@ -85,7 +73,7 @@ const OrdersScreen = ({navigation}) => {
                 setOrderStatusTypeId(OrderStatus[filterLabel])
               }} 
               buttonVariant={'circle'} 
-              style={{ marginVertical: 28, marginHorizontal: 4, width: '19%' }}
+              style={styles.labelButtonStyle}
             />))
           }
         </View>

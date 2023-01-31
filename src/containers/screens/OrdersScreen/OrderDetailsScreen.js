@@ -21,16 +21,10 @@ const OrderDetailsScreen = ({navigation,route: {
   console.log(order)
 
   const itemImage = (item) => (
-    <View style={{
-      flexDirection: 'row',
-    }}>
+    <View style={styles.fdrow}>
       <Image 
         source={Images.beefBurger} 
-        style={{
-          width: 36,
-          height: 36,
-          marginRight: 16,
-        }}
+        style={styles.imgStyle}
       />
       <CaptionedText heading={item.heading} text={item.text} />
     </View>
@@ -45,7 +39,12 @@ const OrderDetailsScreen = ({navigation,route: {
         />
         <Header
           left
-          title={<View style={{ flexDirection: 'column', paddingLeft: 50}}><Text style={{color: 'white'}}>Order no: {order?.id}</Text><Text style={{color: 'white'}}>ORDER DETAILS</Text></View>}
+          title={
+            <View style={styles.headerStyle}>
+              <Text style={styles.white}>Order no: {order?.id}</Text>
+              <Text style={styles.white}>ORDER DETAILS</Text>
+            </View>
+            }
           right={(
             <ButtonIconOrText
               label={'On the way'}
@@ -56,18 +55,18 @@ const OrderDetailsScreen = ({navigation,route: {
               onPress={() => {
 
               }}
-              style={{ height: 58, backgroundColor: '#0EBE7E' }}
+              style={styles.onMyWayButton}
             />
           )}
         />
-        <View style={{flexDirection:'row', backgroundColor: Colors.white, margin: 16}}>
+        <View style={styles.trakingComponent}>
           <Tracking />
         </View>
-        <View style={{flexDirection: 'row', marginHorizontal: 16, justifyContent: 'space-between' }}>
-            <View style={{height: 300, width: '49%', backgroundColor: 'white', padding: 16, borderRadius: 8}}>
+        <View style={styles.mapViewHeader}>
+            <View style={styles.mapView}>
               <MapsView/>
             </View>
-            <View style={{height: 300, width: '49%', backgroundColor: 'white', padding: 16, borderRadius: 8}}>
+            <View style={styles.mapView}>
               <CustomerDetailCard/>
             </View>
         </View>
@@ -81,7 +80,7 @@ const OrderDetailsScreen = ({navigation,route: {
             {name: 'Quantity', width: '20%'}, 
             {name: 'Price', width: '15%'}, 
             {name: 'Total Price', width: '20%'}, 
-            {name: '', width: '10%' }
+            {name: '', width: '12%' }
           ]}
         />
         {

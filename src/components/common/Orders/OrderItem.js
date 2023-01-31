@@ -6,6 +6,7 @@ import ShadowCard from '../ShadowCard';
 import { CaptionedText } from '../CaptionedText';
 import Tag from '../Tag';
 import OrderDetailsModal from '../../../containers/screens/OrdersScreen/OrderDetailsModal';
+import { styles } from './styles';
 
 const propTypes = {};
 
@@ -21,50 +22,26 @@ const OrderItem = ({
   const openModal = () => setShowItemDetails(true)
 
   return (
-    <ShadowCard style={{margin: 20, paddingHorizontal: 28, borderRadius: 9}}>
-      <View style={{
-        paddingVertical: 24,
-        borderBottomColor: Colors.blackCoral,
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.lightGra,
-      }}>
-        <View style={{alignItems: 'center', flexDirection: 'row'}}>
-          <Text style={{ paddingRight: 10}}>
-            ORDER ID #<Text style={[, Fonts.bold]}>{order?.id}</Text>
+    <ShadowCard style={styles.container}>
+      <View style={styles.childContainer}>
+        <View style={styles.orderIdStyles}>
+          <Text style={styles.pr10}>
+            ORDER ID #<Text style={[Fonts.bold]}>{order?.id}</Text>
           </Text>
           <Tag text= {order.orderStatus} type={'success'}/>
         </View>
-        <View style={{ flexDirection: 'row'}}>
+        <View style={styles.fdRow}>
           <Text>Create date & time: </Text><Text>{order.createdOnText}</Text>
         </View>
       </View>
       <View
-        style={{
-          paddingVertical: 28,
-          justifyContent: 'space-between',
-          flexDirection: 'row',
-          alignItems: 'center'
-        }}
+        style={styles.cardStyle}
       >
-        <View style={{
-          width: '80%',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-          <View style={{
-            flexDirection: 'row',
-          }}>
+        <View style={styles.CardTextStyle}>
+          <View style={styles.fdRow}>
             <Image 
               source={Images.man} 
-              style={{
-                width: 36,
-                height: 36,
-                marginRight: 16,
-                borderRadius: 50
-              }}
+              style={styles.imgStyle}
             />
             <CaptionedText heading={'heading'} text={'text'} />
           </View>
