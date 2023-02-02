@@ -65,7 +65,9 @@ const OrderHistoryItem = ({
           {
             order?.items.map((item, index) => {
               return (
-              <CaptionedText key={index} heading={item.name} text={'4 more items'} />
+                <View style={{}}>
+                  <CaptionedText key={index} heading={item.name} text={'4 more items'} />
+                </View>
               )
             })
           }
@@ -74,10 +76,10 @@ const OrderHistoryItem = ({
           order?.items.map((item, index) => {
             return (
               <>
-              <CaptionedText heading={item.quantity} key={index}/>
-              <CaptionedText heading={order.paymentMethod ?? 'Cash'} text={'Payment'} />
-              <CaptionedText heading={item?.price} text={'total'} />
-             </>
+                <CaptionedText heading={item.quantity} key={index}/>
+                <CaptionedText heading={order.paymentMethod ?? 'Cash'} text={'Payment'}/>
+                <CaptionedText heading={item?.price} text={'total'}/>
+              </>
             )
           })
         }
