@@ -6,6 +6,7 @@ import BackIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Divider} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const propTypes = {};
 
@@ -14,7 +15,9 @@ const defaultProps = {};
 const Header = props => {
   // console.log('data props -- ', props);
   const navigation = useNavigation();
-
+  const {user} = useSelector(({AccountState}) => AccountState);
+  console.log(user);
+  debugger;
   return (
     <>
       <View style={[styles.container]}>
@@ -51,9 +54,15 @@ const Header = props => {
           <View>
             {props.user ? (
               <View style={{flexDirection:'row',flex: 1, alignItems:'center'}}>
-                <Text style={[Fonts.bold,{color: 'white', marginRight: 16}]}>Aneeb Iqbal</Text>
+                <Text style={[Fonts.bold,{color: 'white', marginRight: 16}]}>{user?.fullName}</Text>
                 <Image
-                  source={Images.man}
+                  source={
+                    user.imageUrl !== null &&
+                    user.imageUrl !== undefined &&
+                    user.imageUrl !== ''
+                      ? {uri: user.imageUrl}
+                      : require('../../assets/images/man.png')
+                  }
                   style={{
                     height: 35,
                     width: 35,
