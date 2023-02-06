@@ -1,8 +1,7 @@
 import { View, Text, SafeAreaView, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
-
-import {ButtonIconOrText, FiltersHeader, Header, OrderItem, OrdersStatisticsCard, SearchField, ShadowCard} from '../../../components/common';
+import { FiltersHeader, Header, OrdersStatisticsCard} from '../../../components/common';
 import { styles } from './styles';
 import { Images } from '../../../theme';
 import OrderDetailsModal from './OrderDetailsModal';
@@ -23,18 +22,18 @@ const OrderStatisticsScreen = ({navigation}) => {
   const [showItemDetails, setShowItemDetails] = useState(false)
 
   const filterItems = [
-    { title: 'Statistics', image: Images.statistics, onClick: () => setCurrentTab(0),},
-    { title: 'All Orderss', image: Images.allOrders, onClick: () => setCurrentTab(1),},    
+    { title: 'Statistics', image: currentTab == 0 ? Images.statisticsOn : Images.statistics, onClick: () => setCurrentTab(0),},
+    { title: 'All Orderss', image: currentTab == 1 ? Images.allOrdersOn : Images.allOrders, onClick: () => setCurrentTab(1),},    
   ]
 
   const OrderStatistics =() => {
     return (
-      <View style={[styles.container, {justifyContent: 'center'}]}>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 60, marginBottom: 10}}>
+      <View style={[styles.container, styles.justifyContentC]}>
+            <View style={styles.firstTwoBox}>
                 <OrdersStatisticsCard style={styles.orderStatisticsCard} image={Images.totalOrders} heading="Total Orders" label="7000"/>
-                <OrdersStatisticsCard style={styles.orderStatisticsCard} onPress={() => navigation.navigate('OrderHistoryScreen')} image={Images.activeOrders} heading="Active Orders" label="7000"/>
+                <OrdersStatisticsCard style={styles.orderStatisticsCard} image={Images.activeOrders} heading="Active Orders" label="7000"/>
             </View>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between' , alignItems: 'center', margin: 70, marginBottom: 300 }}>
+            <View style={styles.lastTwoBox}>
                 <OrdersStatisticsCard style={styles.orderStatisticsCard} image={Images.pendingOrders} heading="Pending Orders" label="7000"/>
                 <OrdersStatisticsCard style={styles.orderStatisticsCard} image={Images.completedOrders} heading="Completed Orders" label="7000"/>
           </View>
