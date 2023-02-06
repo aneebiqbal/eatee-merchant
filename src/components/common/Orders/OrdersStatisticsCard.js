@@ -9,7 +9,7 @@ const propTypes = {};
 const defaultProps = {};
 const OrdersStatisticsCard = ({heading, label, image, style, onPress, children}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.container, ApplicationStyles.shadow, style]}>
+    <View onPress={onPress} style={[styles.container, ApplicationStyles.shadow, style]}>
     {image && 
     <View style={[styles.innerContainer]}>
       <View style={{alignItems:'center', justifyContent:'center'}}>
@@ -31,7 +31,7 @@ const OrdersStatisticsCard = ({heading, label, image, style, onPress, children})
       /> 
     </View>}
     {children}
-  </TouchableOpacity>
+  </View>
 );
 }
 

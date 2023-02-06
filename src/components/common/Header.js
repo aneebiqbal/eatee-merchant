@@ -17,7 +17,6 @@ const Header = props => {
   const navigation = useNavigation();
   const {user} = useSelector(({AccountState}) => AccountState);
   console.log(user);
-  debugger;
   return (
     <>
       <View style={[styles.container]}>

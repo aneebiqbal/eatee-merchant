@@ -18,7 +18,7 @@ const FiltersHeader = ({items}) => {
         items.map((item, index) => (
           <TouchableOpacity onPress={item.onClick}>
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: 16}}>
-              <Image source={item.image} style={{height: 33, width: 30, marginBottom: 4}}/>
+              <Image source={item.image} style={{height: 33, width: 33, marginBottom: 4}}/>
               <Text style={{color: 'white'}}>{item.title}</Text>
             </View>
           </TouchableOpacity>)

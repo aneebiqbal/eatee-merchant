@@ -33,7 +33,7 @@ const OrderDetailsModal = ({
         <View>
           <View style={styles.captionTextStyle}>
             <CaptionedText heading={order.id} text='Order ID #'/>
-            <CaptionedText heading='Payment Type:' text={order.paymentMethod ?? 'Cash'} direction='row' textStyle={[Fonts.bold, {color: Colors.primary}]}/>
+            <CaptionedText heading='Payment Type:' text={order.paymentMethodId == 0 ? 'Cash' : 'Card'} direction='row' textStyle={[Fonts.bold, {color: Colors.primary}]}/>
           </View>
           <Divider/>
 

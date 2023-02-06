@@ -43,9 +43,9 @@ const OrderItem = ({
             />
             <CaptionedText heading={'heading'} text={'text'} />
           </View>
-          <CaptionedText heading={'pickup'} text={'service'} />
-          <CaptionedText heading={order.paymentMethod ?? 'Cash'} text={'Payment'} />
-          <CaptionedText heading={order.totalAmount} text={'total'} />
+          <CaptionedText heading={order?.orderTypeId == 0 ? 'Delivery' : 'Pickup'} text={'service'} />
+          <CaptionedText heading={order?.paymentMethodId == 0 ? 'Cash' : 'Card'} text={'Payment'} />
+          <CaptionedText heading={order?.totalAmount} text={'total'} />
         </View>
 
         <TouchableOpacity onPress={() => setIsVisible(!isVisible)} style={{marginLeft: 10}}>
