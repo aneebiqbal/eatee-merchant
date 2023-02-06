@@ -12,22 +12,17 @@ const OrdersStatisticsCard = ({heading, label, image, style, onPress, children})
     <View onPress={onPress} style={[styles.container, ApplicationStyles.shadow, style]}>
     {image && 
     <View style={[styles.innerContainer]}>
-      <View style={{alignItems:'center', justifyContent:'center'}}>
-        <Text style={[Fonts.extraSmall, {color: Colors.textGray, marginLeft: 2}]}>
+      <View style={styles.textMainStyle}>
+        <Text style={[Fonts.extraSmall, styles.headingTextStyle]}>
           {heading}
         </Text>
-        <Text style={[Fonts.bold, {color: Colors.black, marginLeft: 2, fontSize: 40}]}>
+        <Text style={[Fonts.bold, styles.labelTextStyle]}>
           {label}
         </Text>
       </View>
       <Image
         source={image}
-        style={{
-          height: 120,
-          width: 120,
-          position: 'absolute',
-          left: -60
-        }}
+        style={styles.imgStyle}
       /> 
     </View>}
     {children}

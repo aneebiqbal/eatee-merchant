@@ -12,5 +12,24 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 40
       },
+      textMainStyle: {
+        alignItems:'center',
+        justifyContent:'center'
+      },
+      headingTextStyle : {
+          color: Colors.textGray,
+          marginLeft: 2
+      },
+      labelTextStyle: {
+        color: Colors.black,
+        marginLeft: 2,
+        fontSize: 40
+      },
+      imgStyle: {
+        height: 120,
+        width: 120,
+        position: 'absolute',
+        left: -60
+      }
 
 });
