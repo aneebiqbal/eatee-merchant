@@ -17,7 +17,6 @@ import { CaptionedText } from '../../../components/common/CaptionedText';
 const OrderDetailsScreen = ({navigation,route: {
   params: {order}
 }}) => {
-  debugger;
   console.log(order)
 
   const itemImage = (item) => (
@@ -41,7 +40,7 @@ const OrderDetailsScreen = ({navigation,route: {
           left
           title={
             <View style={styles.headerStyle}>
-              <Text style={styles.white}>Order no: {order?.id}</Text>
+              <Text style={styles.white}>Order no: {order?.orderNumber}</Text>
               <Text style={styles.white}>ORDER DETAILS</Text>
             </View>
             }
@@ -64,10 +63,10 @@ const OrderDetailsScreen = ({navigation,route: {
         </View>
         <View style={styles.mapViewHeader}>
             <View style={styles.mapView}>
-              <MapsView/>
+              <MapsView order={order}/>
             </View>
             <View style={styles.mapView}>
-              <CustomerDetailCard/>
+              <CustomerDetailCard order={order}/>
             </View>
         </View>
         {/* <View style={{margin: 16}}>
@@ -76,11 +75,11 @@ const OrderDetailsScreen = ({navigation,route: {
 
         <TableRow
           rowItems={[
-            {name: 'Item', width: '40%'}, 
+            {name: 'Item', width: '45%'}, 
             {name: 'Quantity', width: '20%'}, 
             {name: 'Price', width: '15%'}, 
             {name: 'Total Price', width: '20%'}, 
-            {name: '', width: '12%' }
+            // {name: '', width: '12%' }
           ]}
         />
         {
@@ -94,18 +93,18 @@ const OrderDetailsScreen = ({navigation,route: {
                       heading: item.name,
                       text: 'Lorem ipsum text'
                     })), 
-                    width: '40%'
+                    width: '50%'
                   },
                   {name: item.quantity, width: '20%'}, 
                   {name: item.price, width: '15%'}, 
                   {name: item.price, width: '20%'}, 
-                  {column: (<Image
-                    source={Images.cross}
-                    style={{
-                      height: 20,
-                      width: 20,
-                    }}
-                  />), width: '10%' }
+                  // {column: (<Image
+                  //   source={Images.cross}
+                  //   style={{
+                  //     height: 20,
+                  //     width: 20,
+                  //   }}
+                  // />), width: '10%' }
                 ]}
               />
             )

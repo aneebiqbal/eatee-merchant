@@ -1,6 +1,6 @@
 import { View, SafeAreaView, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { ButtonIconOrText, Header, PaginatedList, SearchField, Spinner } from '../../../components/common';
+import { ButtonIconOrText, FiltersHeader, Header, PaginatedList, SearchField, Spinner } from '../../../components/common';
 import OrderItem from '../../../components/common/Orders/OrderItem';
 import { Colors, Images } from '../../../theme';
 import OrderDetailsModal from './OrderDetailsModal';
@@ -11,22 +11,29 @@ import { useDispatch } from 'react-redux';
 import { styles } from './styles';
 
 export const OrderStatus = Object.freeze({
-  InProgress: 1,
-  Cancelled: 5,
+  All: 0,
+  Pending: 1,
+  Preparing: 2,
+  Accepted: 3,
   Completed: 4,
-  All: 0
+  Cancelled: 5,
 });
 
 
 const OrdersScreen = ({navigation}) => {
-
   const dispatch = useDispatch();
   const {
     user: {accessToken},
   } = useSelector(({AccountState}) => AccountState);
 
   const [searchText, setSearchText, getSearchText] = useState('');
+  const [currentTab, setCurrentTab] = useState(1)
   const [orderStatusTypeId, setOrderStatusTypeId] = useState(OrderStatus.All);
+
+  const filterItems = [
+    { title: 'Statistics', image: currentTab == 0 ? Images.statisticsOn : Images.statistics, onClick: () => setCurrentTab(0),},
+    { title: 'All Orders', image: currentTab == 1 ? Images.allOrdersOn : Images.allOrders, onClick: () => setCurrentTab(1)},    
+  ]
 
   useEffect(() => {
     dispatch(
@@ -34,11 +41,25 @@ const OrdersScreen = ({navigation}) => {
         page: 0,
         limit: 0,
         totalCount: 0,
+        searchText: searchText,
         orderStatusTypeId: orderStatusTypeId,
       }),
     );
     return () => dispatch(orderHistoryResetStates());
   }, [accessToken, dispatch, searchText, orderStatusTypeId]);
+
+  const fetchMore = (action, meta) => {
+    if (meta) {
+      let payload = {
+        page: meta.currentPage + 1,
+        limit: 10,
+        totalCount: meta.totalCount,
+        searchText: orderStatusTypeId,
+        orderStatusTypeId: orderStatusTypeId,
+      };
+      dispatch(action(accessToken, payload));
+    }
+  };
 
 
   const {ordersStatus, ordersMeta, orders} = useSelector(
@@ -60,23 +81,44 @@ const OrdersScreen = ({navigation}) => {
         left
         navigation={navigation}
       />
-      <View 
-        style={styles.childContainer}
+      <FiltersHeader
+          items={filterItems}
+      />
+      <View>
+          {currentTab === 0 && navigation.navigate('OrdersStatisticsScreen')}
+          {/* {currentTab === 1 && } */}
+      </View>
+
+      <View horizontal={true} style={{
+          flexDirection: 'row',
+          backgroundColor: '#1A1E22',
+          justifyContent: 'center',
+          // justifyContent: 'space-between',
+          width: '100%',
+          }}
       >
-        <SearchField style={styles.searchField} onChange={()=>console.log('test')}/>
-        <View style={styles.filterStyle}>
-          {
-            ['All', 'InProgress', 'Completed', 'Cancelled'].map((filterLabel)=> (
-              <ButtonIconOrText label={filterLabel} 
-              backgroundColor={OrderStatus[filterLabel] === orderStatusTypeId ? Colors.primary : Colors.lightGra}
-              onPress={()=> {
-                setOrderStatusTypeId(OrderStatus[filterLabel])
-              }} 
-              buttonVariant={'circle'} 
-              style={styles.labelButtonStyle}
-            />))
-          }
-        </View>
+        {
+          ['All', 'Pending', 'Preparing', 'Accepted', 'Completed', 'Cancelled'].map((filterLabel)=> (
+            <ButtonIconOrText label={filterLabel} 
+            backgroundColor={OrderStatus[filterLabel] === orderStatusTypeId ? Colors.primary : Colors.lightGra}
+            onPress={()=> {
+              setOrderStatusTypeId(OrderStatus[filterLabel])
+            }} 
+            buttonVariant={'circle'} 
+            style={styles.labelButtonStyle}
+          />))
+        } 
+      </View>
+      <View 
+        style={{
+          flexDirection: 'row',
+         }}
+      >
+        <SearchField 
+         style={styles.searchField}
+         onChange={setSearchText}
+         value={searchText}
+        />
       </View>
       {ordersStatus === Status.LOADING && !orders.length ? (
           <Spinner />

@@ -16,7 +16,6 @@ const OrderHistoryItem = ({
   order
 }) => {
   console.log(order)
-  debugger;
   return (
     <ShadowCard style={{margin: 10, paddingHorizontal: 28}}>
     <View style={{

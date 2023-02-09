@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../theme';
-import {HP} from '../../../utils';
+import {HP, WP} from '../../../utils';
 
 export const styles = StyleSheet.create({
     container: {
@@ -25,7 +25,8 @@ export const styles = StyleSheet.create({
         paddingRight: 10
     },
     fdRow: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     cardStyle: {
         paddingVertical: 28,
@@ -39,8 +40,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     imgStyle: {
-        width: 36,
-        height: 36,
+        width: WP(6),
+        height: HP(4),
         marginRight: 16,
         borderRadius: 50
     },

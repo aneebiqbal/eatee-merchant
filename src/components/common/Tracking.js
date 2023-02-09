@@ -31,8 +31,9 @@ const Tracking = () => {
           labelFontSize={14}
           activeStepFontSize={14}
           completedStepFontSize={14}
->
-        <ProgressStep label="Order Created" removeBtnRow />
+      >
+
+        <ProgressStep label="Order Created" removeBtnRow  />
         <ProgressStep label="Payment Success" removeBtnRow />
         <ProgressStep label="On Delivery" removeBtnRow/>
         <ProgressStep label="Order Delivered" removeBtnRow/>

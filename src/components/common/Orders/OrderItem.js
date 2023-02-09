@@ -26,7 +26,7 @@ const OrderItem = ({
       <View style={styles.childContainer}>
         <View style={styles.orderIdStyles}>
           <Text style={styles.pr10}>
-            ORDER ID #<Text style={[Fonts.bold]}>{order?.id}</Text>
+            ORDER ID <Text style={[Fonts.bold]}>{order?.orderNumber}</Text>
           </Text>
           <Tag text= {order.orderStatus} type={'success'}/>
         </View>
@@ -38,10 +38,16 @@ const OrderItem = ({
         <View style={styles.CardTextStyle}>
           <View style={styles.fdRow}>
             <Image 
-              source={Images.man} 
+              source={
+                order.createdBy.imageUrl !== null &&
+                order.createdBy.imageUrl !== undefined &&
+                order.createdBy.imageUrl !== ''
+                  ? {uri: order.createdBy.imageUrl}
+                  : require('../../../assets/images/man2.png')
+              } 
               style={styles.imgStyle}
             />
-            <CaptionedText heading={'heading'} text={'text'} />
+            <CaptionedText heading={order.createdBy.firstName + ' ' + order.createdBy.lastName} />
           </View>
           <CaptionedText heading={order?.orderTypeId == 0 ? 'Delivery' : 'Pickup'} text={'service'} />
           <CaptionedText heading={order?.paymentMethodId == 0 ? 'Cash' : 'Card'} text={'Payment'} />
