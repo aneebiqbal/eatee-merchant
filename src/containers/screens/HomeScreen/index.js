@@ -24,15 +24,15 @@ const HomeScreen = ({navigation}) => {
           logo
           user
         />
-        <View style={[styles.container, {justifyContent: 'center', }]}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 40 }}>
-            <ShadowCard style={{width: 230, paddingVertical: 50, borderRadius: 8}} image={Images.ordersSelected} heading="ORDERS" onPress={() => navigation.navigate('OrdersStatisticsScreen')}/>
-            <ShadowCard style={{width: 230, paddingVertical: 50, borderRadius: 8}} image={Images.inventory} heading="INVENTORY" onPress={() => navigation.navigate('InventoryScreen')}/>
-            <ShadowCard style={{width: 230, paddingVertical: 50, borderRadius: 8}} image={Images.history} heading="HISTORY" onPress={() => navigation.navigate('HistoryScreen')}/>
+        <View style={[styles.container, {justifyContent: 'center', flexDirection:'column',}]}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 130, marginVertical: 60}}>
+            <ShadowCard style={{width: 250, paddingVertical: 40, borderRadius: 8}} image={Images.ordersSelected} heading="ORDERS" onPress={() => navigation.navigate('OrdersStatisticsScreen')}/>
+            <ShadowCard style={{width: 250, paddingVertical: 40, borderRadius: 8}} image={Images.inventory} heading="INVENTORY" onPress={() => navigation.navigate('InventoryScreen')}/>
+            {/* <ShadowCard style={{width: 230, paddingVertical: 50, borderRadius: 8}} image={Images.history} heading="HISTORY" onPress={() => navigation.navigate('HistoryScreen')}/> */}
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around' , alignItems: 'center', marginHorizontal: 130 }}>
-            <ShadowCard style={{width: 250, paddingVertical: 50, borderRadius: 8}} image={Images.accounts} heading="MY ACCOUNT" onPress={() => navigation.navigate('MyAccountScreen')}/>
-            <ShadowCard style={{width: 250, paddingVertical: 50, borderRadius: 8}} image={Images.settings} heading="SETTINGS" onPress={() => navigation.navigate('SettingsScreen')}/>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between' , alignItems: 'center', marginHorizontal: 130}}>
+            <ShadowCard style={{width: 250, paddingVertical: 40, borderRadius: 8}} image={Images.accounts} heading="MY ACCOUNT" onPress={() => navigation.navigate('MyAccountScreen')}/>
+            <ShadowCard style={{width: 250, paddingVertical: 40, borderRadius: 8}} image={Images.settings} heading="SETTINGS" onPress={() => navigation.navigate('SettingsScreen')}/>
           </View>
         </View>
     </SafeAreaView>
