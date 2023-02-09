@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 import { Colors, Images } from '../../theme'
 import { Divider } from 'react-native-paper'
@@ -36,8 +36,10 @@ const CustomerDetailCard = ({order}) => {
         </View>
         <Divider style={{marginTop: 10}}/>
 
-        <View style={{flexDirection:'row', alignItems:'center', margin: 20}}>
-            <MaterialIcons name="phone" size={35} color={Colors.secGrayMid} style={{marginRight: 30}} />  
+        <TouchableOpacity
+            onPress={()=>{Linking.openURL(`tel:+92${order.createdBy.mobile}`);}}
+            style={{flexDirection:'row', alignItems:'center', margin: 20}}>
+            <MaterialIcons name="phone" size={35} color={Colors.secGrayMid} style={{marginRight: 30}} />
             <Text style={{fontSize:20}}>
                 {
                  order.createdBy.mobile !== null &&
@@ -47,12 +49,12 @@ const CustomerDetailCard = ({order}) => {
                  : '0000-0000-0000'
                 }
             </Text>  
-        </View>
+        </TouchableOpacity>
         <Divider style={{marginTop: 10}}/>
         <View style={{flexDirection:'row', alignItems:"center", margin: 20,}}>
             <MaterialIcons name="location-on" size={35} color={Colors.secGrayMid} style={{marginRight: 30}} /> 
             <View>
-                <Text numberOfLines={4} style={{fontSize:20, width: WP(30) }}>{order.customerAddress.addressLine1}</Text> 
+                <Text numberOfLines={4} style={{fontSize:20, width: WP(30) }}>{order.deliveryAddress}</Text> 
             </View> 
         </View>
     </View>
