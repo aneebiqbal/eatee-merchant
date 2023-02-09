@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 import {Colors, Fonts, Images} from '../../theme';
-import {HP} from '../../utils/responsive';
+import {HP, WP} from '../../utils/responsive';
 import BackIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Divider} from 'react-native-paper';
@@ -63,8 +63,9 @@ const Header = props => {
                       : require('../../assets/images/man.png')
                   }
                   style={{
-                    height: 35,
-                    width: 35,
+                    height: HP(4) ,
+                    width: WP(6),
+                    borderRadius: 50
                   }}
                 />
               </View>
