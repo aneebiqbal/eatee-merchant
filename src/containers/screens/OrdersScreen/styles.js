@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   searchField: {
     margin: 20,
     width: '30%',
-    height: '50%',
+    height: '80%',
     borderRadius: 40
   },
   filterStyle: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   labelButtonStyle: {
     marginVertical: 28,
     marginHorizontal: 4,
-    width: '19%'
+    width: '15%'
   },
   modalStyle: {
     margin: 0,
@@ -90,6 +90,22 @@ orderStatisticsCard: {
   width: 300,
   paddingVertical: 10,
   borderRadius: 8
+},
+justifyContentC: {
+  justifyContent: 'center'
+},
+firstTwoBox: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  margin: 60,
+},
+lastTwoBox: {
+  flexDirection: 'row',
+  justifyContent: 'space-between' ,
+  alignItems: 'center',
+  margin: 60,
+  paddingBottom: '50%'
 }
 
 });
