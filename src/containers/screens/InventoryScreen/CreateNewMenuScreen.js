@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ButtonIconOrText, Header } from '../../../components/common'
 import { ApplicationStyles, Images } from '../../../theme'
 import { Icon } from 'react-native-elements'
+import { HP, WP } from '../../../utils'
 
 const CreateNewMenuScreen = () => {
     const [itemDetail,setItemDetail]=useState([{sizeTypeId:30,price:100}]);
@@ -24,28 +25,27 @@ const CreateNewMenuScreen = () => {
     //     document.title = `You clicked ${count} times`;
     //   });
         return itemDetail?.map((element,index) => {
-            debugger;
             return (
-                <View style={{flexDirection:"row", marginTop: 15, alignItems:"center"}}>
-                    <View style={{height: 90}}>
+                <View style={{flexDirection:"row", marginTop: 15, alignItems: 'center'}}>
+                    <View>
                         <Text>Price</Text>
                         <TextInput
                             value={element.price}
                             placeholder="€20"
-                            style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
+                            style={{height: 40, width: 150, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
                             //onChangeText={(text) => console.log(text)}
                         />
                     </View>
-                    <View style={{marginHorizontal: 20, height: 90}}>
+                    <View style={{paddingHorizontal: 20}}>
                         <Text>Size</Text>
                         <TextInput
                             value={element.sizeTypeId}
                             placeholder="XL"
-                            style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
+                            style={{height: 40, width: 150, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
                             //onChangeText={(text) => console.log(text)}
                         />
                     </View>
-                    <TouchableOpacity onPress={()=>{removeItemDetail(index)}}>
+                    <TouchableOpacity onPress={()=>{removeItemDetail(index)}} style={{marginTop: 20}}>
                         <Image
                             source={Images.cross2}
                             style={{
@@ -107,28 +107,28 @@ const CreateNewMenuScreen = () => {
                     <Image
                         source={Images.burger2}
                         style={{
-                            height: 170,
-                            width: 190,
+                            height: HP(15),
+                            width: WP(23),
                             bottom: 10,
-                            left: 20,
+                            left: 25,
                             position:'absolute'
                         }}
                     />
                 </View>
             </View>
-            <View style={{marginHorizontal: 20, bottom: 90, width: 400}}>
+            <View style={{marginHorizontal: 20, bottom: 90, width: '52%'}}>
                <Text>Description</Text>
                <TextInput
                   multiline={true}
                   numberOfLines={4}
                   placeholder="Food"
                   placeholderStyle={{ top: 0, left: 0, position: 'absolute' }}
-                  style={{height: 90, width: 400, borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
+                  style={{height: 90, width: '100%', borderColor: 'gray', borderWidth: 1, borderRadius: 6, marginTop: 10, textAlign: 'center'}}
                   //onChangeText={(text) => console.log(text)}
                />
             </View>
 
-            <View style={{ bottom: 30, marginHorizontal: 20, flexDirection:'column'}}>
+            <View style={{ marginHorizontal: 20, flexDirection:'column', alignItems: 'flex-start', bottom : 50}}>
                 <View style={{flexDirection:'row',alignItems:"center"}}>
                     <Text style={{
                         fontWeight: '700',
@@ -152,19 +152,19 @@ const CreateNewMenuScreen = () => {
 
             <View style={{flexDirection:'row', justifyContent: 'flex-start', marginHorizontal: 22}}>
                 <ButtonIconOrText
-                        label={'Cancel'}
-                        style={{
-                            height: '100%',
-                            width: '20%',
-                            marginHorizontal: 5,
-                            backgroundColor:'#FFC018',
-                        }}
+                    label={'Cancel'}
+                    style={{
+                        height: '100%',
+                        width: '25%',
+                        marginHorizontal: 5,
+                        backgroundColor:'#FFC018',
+                    }}
                     />
                     <ButtonIconOrText
                         label={'Save Changes'}
                         style={{
                             height: '100%',
-                            width: '20%'
+                            width: '25%'
                         }}
                     />
             </View>

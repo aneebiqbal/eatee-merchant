@@ -18,19 +18,19 @@ const CreateNewCategoryModal = ({isVisible, closeModal, navigation}) => {
     setcategoryDetail([...categoryDetail]);
   }
   
-  const removeCategoryDetaill=(index) => {
+  const removeCategoryDetaill=index => {
     categoryDetail.splice(index,1);
     setcategoryDetail([...categoryDetail]);
   }
   const renderCreateNewCategory =() => {
     return categoryDetail?.map((element, index) =>{
       return(
-        <View>
+        <View key={index}>
           <View>
-              <Divider style={{marginHorizontal: 30, top: 15}}/>
+              <Divider style={{marginHorizontal: 30, marginTop: 10}}/>
           </View>
   
-          <View style={{marginHorizontal: 40, height: 90, marginTop: 40}}>
+          <View style={{marginHorizontal: 40, height: 90, marginTop: 20}}>
             <Text style={{fontWeight: '700', fontSize: 16}}>Category Name</Text>
             <TextInput
                 placeholder="Cheese"
