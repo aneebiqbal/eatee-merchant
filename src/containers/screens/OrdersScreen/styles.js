@@ -36,6 +36,15 @@ export const styles = StyleSheet.create({
     height: '100%',
     alignSelf: 'flex-end'
   },
+  ChangeOrderStatusModal: {
+    margin: 0,
+    flex: 1,
+    backgroundColor: 'white',
+    width: '50%',
+    height: '100%',
+    alignSelf: 'flex-end',
+    borderRadius: 10
+  },
   flex1: {
     flex: 1
   },
@@ -106,6 +115,13 @@ lastTwoBox: {
   alignItems: 'center',
   margin: 60,
   paddingBottom: '50%'
-}
-
+},
+changeStatusModalContainer: {
+  paddingHorizontal: 35,
+  justifyContent: 'space-between',
+  flexDirection: 'column',
+  paddingVertical: 20,
+  alignItems:'center',
+  paddingVertical: 30
+},
 });

@@ -49,14 +49,14 @@ const OrderDetailsModal = ({
             <Tag text={order?.orderStatus} />
           </View>
 
-          <View style={styles.captionTextStyle}>
-            <Text>Promo Code</Text>
+          {/* <View style={styles.captionTextStyle}>
+            <Text>Notes</Text>
             <Tag text='0586' />
-          </View>
-          <View style={styles.captionTextStyle}>
+          </View> */}
+          {/* <View style={styles.captionTextStyle}>
             <Text>Tax</Text>
             <Text>$ {order.totalAmount}</Text>
-          </View>
+          </View> */}
           <Divider/>
           <View style={styles.captionTextStyle}>
             <Text style={[Fonts.bold, Fonts.small]}>Total</Text>

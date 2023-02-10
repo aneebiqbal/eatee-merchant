@@ -1,10 +1,14 @@
-import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, FlatList, Modal, Alert } from 'react-native'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { styles } from './styles';
 import { ButtonIconOrText, CustomerDetailCard, FiltersHeader, Header, MapsView, OrderDeatilsHeading, OrderDetailsCard, RiderDetailsRowCard, TableRow, Tracking } from '../../../components/common';
-import { Colors, Images } from '../../../theme';
+import { ApplicationStyles, Colors, Images } from '../../../theme';
 import { CaptionedText } from '../../../components/common/CaptionedText';
+import { Divider } from 'react-native-paper';
+import SelectDropdown from 'react-native-select-dropdown'
+import { WP } from '../../../utils';
+import OrderChangeModal from './OrderStatusChangeModal';
 
   const propTypes = {
     navigation: PropTypes.shape({
@@ -19,6 +23,13 @@ const OrderDetailsScreen = ({navigation,route: {
 }}) => {
   console.log(order)
 
+  // const [selectedValue, setSelectedValue] = useState("Java");
+  // const [modalVisible, setModalVisible] = useState(false);
+  const [orderStatusTypeId, setOrderStatusTypeId] = useState(1);
+  const [isVisible, setIsVisible] = useState(false);  const closeModal = () => setShowItemDetails(false)
+  const [showItemDetails, setShowItemDetails] = useState(false);
+  const openModal = () => setShowItemDetails(true)
+
   const itemImage = (item) => (
     <View style={styles.fdrow}>
       <Image 
@@ -28,7 +39,17 @@ const OrderDetailsScreen = ({navigation,route: {
       <CaptionedText heading={item.heading} text={item.text} />
     </View>
   )
-  
+
+  const options = ["Pending", "Preparing", "Shipping", "Completed", "Cancelled"]
+
+  // const options = [
+  //   { index: "Pending", value: "Pending" },
+  //   { index: "Preparing", value: "Preparing" },
+  //   { index: "Accepted", value: "Accepted" },
+  //   { index: "Completed", value: "Completed" },
+  //   { index: "Cancelled", value: "Cancelled" }
+  // ];
+
   return (
     <SafeAreaView style={[styles.container,{backgroundColor: Colors.lightGra}]}>
       <ScrollView>
@@ -45,17 +66,15 @@ const OrderDetailsScreen = ({navigation,route: {
             </View>
             }
           right={(
-            <ButtonIconOrText
-              label={'On the way'}
-              iconDirection='right'
-              iconName='chevron-down'
-              iconType='material-community'
-              iconSize={30}
-              onPress={() => {
-
-              }}
-              style={styles.onMyWayButton}
-            />
+               <ButtonIconOrText
+                label={order.orderStatus}
+                iconDirection='right'
+                iconName='pending-actions'
+                iconType='MaterialIcons'
+                iconSize={28}
+                onPress={openModal}
+                style={styles.onMyWayButton}
+              /> 
           )}
         />
         <View style={styles.trakingComponent}>
@@ -112,6 +131,7 @@ const OrderDetailsScreen = ({navigation,route: {
         }
         
       </ScrollView>
+      <OrderChangeModal isVisible={showItemDetails} closeModal={closeModal} navigation={navigation} order={order}/>
     </SafeAreaView>
   )
 }
