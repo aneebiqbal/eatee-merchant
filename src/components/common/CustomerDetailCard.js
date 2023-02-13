@@ -2,7 +2,6 @@ import { View, Text, Image, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 import { Colors, Images } from '../../theme'
 import { Divider } from 'react-native-paper'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import Tag from './Tag'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { HP, WP } from '../../utils'
@@ -21,7 +20,7 @@ const CustomerDetailCard = ({order}) => {
                     : require('../../assets/images/man3.png')
                 } 
                 style={{
-                    width: WP(8),
+                    width: WP(7),
                     height: HP(5),
                     marginRight: 16,
                     borderRadius: 50
