@@ -6,6 +6,7 @@ import Modal from "react-native-modal";
 import { Divider } from 'react-native-paper';
 import { CaptionedText } from '../../../components/common/CaptionedText';
 import { styles } from './styles';
+import strings from '../../../constants/strings';
 
 
 const OrderDetailsModal = ({
@@ -14,8 +15,6 @@ const OrderDetailsModal = ({
   navigation,
   order
 }) => {
-  console.log(order)
-
   return (
     <Modal 
       isVisible={isVisible} 
@@ -27,44 +26,42 @@ const OrderDetailsModal = ({
       style={styles.modalStyle}
     >
       <SafeAreaView style={styles.flex1}>
-      <View
-        style={styles.modalContainer}
-      >
-        <View>
-          <View style={styles.captionTextStyle}>
-            <CaptionedText heading={order?.orderNumber} text='Order ID '/>
-            <CaptionedText heading='Payment Type:' text={order.paymentMethodId == 0 ? 'Cash' : 'Card'} direction='row' textStyle={[Fonts.bold, {color: Colors.primary}]}/>
-          </View>
-          <Divider/>
+        <View style={styles.modalContainer}>
+          <View>
+            <View style={styles.captionTextStyle}>
+              <CaptionedText heading={order?.orderNumber} text={strings.orderId}/>
+              <CaptionedText heading={strings.paymentType} text={order.paymentMethodId == 0 ? strings.cash : strings.card}
+                direction='row'
+                textStyle={[Fonts.bold, styles.primaryColor]}
+              />
+            </View>
+            <Divider/>
 
-          {order.items.map((item, index) => {
-            return (
-              <MenuItem item ={item} key={index}/>
-            )
-          })}
-        </View>
-        <View>
-          <View style={styles.captionTextStyle}>
-            <Text>Type</Text>
-            <Tag text={order?.orderStatus} />
-          </View>
+            {order.items.map((item, index) => {
+              return (
+                <MenuItem item ={item} key={index}/>
+              )
+            })}
 
-          {/* <View style={styles.captionTextStyle}>
-            <Text>Notes</Text>
-            <Tag text='0586' />
-          </View> */}
-          {/* <View style={styles.captionTextStyle}>
-            <Text>Tax</Text>
-            <Text>$ {order.totalAmount}</Text>
-          </View> */}
-          <Divider/>
-          <View style={styles.captionTextStyle}>
-            <Text style={[Fonts.bold, Fonts.small]}>Total</Text>
-            <Text style={[Fonts.bold, Fonts.small, { color: Colors.primary }]}>$ {order?.totalAmount}</Text>
           </View>
-          <FullwidthButton label='Track Order Details' onPress= {() => navigation.navigate('OrderHistoryScreen', { order })}/>
+          <View>
+            <View style={styles.captionTextStyle}>
+              <Text>{strings.type}</Text>
+              <Tag text={order?.orderStatus}/>
+            </View>
+            <Divider/>
+            <View style={styles.captionTextStyle}>
+              <Text style={[Fonts.bold, Fonts.small]}>{strings.total}</Text>
+              <Text style={[Fonts.bold, Fonts.small, styles.primaryColor]}>
+                {strings.currency}{order?.totalAmount}
+              </Text>
+            </View>
+            <FullwidthButton label={strings.trackOrderDetails}
+              onPress= {() => navigation.navigate('OrderHistoryScreen',
+              { order })}
+            />
+          </View>
         </View>
-      </View>
       </SafeAreaView>
     </Modal>
   )

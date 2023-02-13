@@ -7,9 +7,9 @@ import { CaptionedText } from '../CaptionedText';
 import Tag from '../Tag';
 import OrderDetailsModal from '../../../containers/screens/OrdersScreen/OrderDetailsModal';
 import { styles } from './styles';
+import strings from '../../../constants/strings';
 
 const propTypes = {};
-
 const defaultProps = {};
 
 const OrderItem = ({
@@ -26,44 +26,44 @@ const OrderItem = ({
       <View style={styles.childContainer}>
         <View style={styles.orderIdStyles}>
           <Text style={styles.pr10}>
-            ORDER ID <Text style={[Fonts.bold]}>{order?.orderNumber}</Text>
+            {strings.orderId}
+            <Text style={[Fonts.bold]}>{order?.orderNumber}</Text>
           </Text>
-          <Tag text= {order.orderStatus} type={'success'}/>
+          <Tag text={order.orderStatus} type={strings.success}/>
         </View>
         <View style={styles.fdRow}>
-          <Text>Create date & time: </Text><Text>{order.createdOnText}</Text>
+          <Text>{strings.dateAndTime}</Text><Text>{order.createdOnText}</Text>
         </View>
       </View>
       <View style={styles.cardStyle}>
         <View style={styles.CardTextStyle}>
           <View style={styles.fdRow}>
-            <Image 
+            <Image
               source={
                 order.createdBy.imageUrl !== null &&
                 order.createdBy.imageUrl !== undefined &&
                 order.createdBy.imageUrl !== ''
                   ? {uri: order.createdBy.imageUrl}
                   : require('../../../assets/images/man2.png')
-              } 
+              }
               style={styles.imgStyle}
             />
-            <CaptionedText heading={order.createdBy.firstName + ' ' + order.createdBy.lastName} />
+            <CaptionedText heading={order.createdBy.firstName + ' ' + order.createdBy.lastName}/>
           </View>
-          <CaptionedText heading={order?.orderTypeId == 0 ? 'Delivery' : 'Pickup'} text={'service'} />
-          <CaptionedText heading={order?.paymentMethodId == 0 ? 'Cash' : 'Card'} text={'Payment'} />
-          <CaptionedText heading={order?.totalAmount} text={'total'} />
+          <CaptionedText heading={order?.orderTypeId == 0 ? strings.delivery : strings.pickup} text={strings.service}/>
+          <CaptionedText heading={order?.paymentMethodId == 0 ? strings.cash : strings.card} text={strings.payment}/>
+          <CaptionedText heading={order?.totalAmount} text={strings.total}/>
         </View>
 
-        <TouchableOpacity onPress={() => setIsVisible(!isVisible)} style={{marginLeft: 10}}>
-          <Icon name='dots-horizontal' type='material-community' color={Colors.primary} size={28} />
+        <TouchableOpacity onPress={() => setIsVisible(!isVisible)} style={styles.ml10}>
+          <Icon name='dots-horizontal' type='material-community' color={Colors.primary} size={28}/>
         </TouchableOpacity>
 
         <View>
           {isVisible && (
             <View style={[modalStyles.container, ApplicationStyles.shadow]}>
-              {/* {children} */}
               <TouchableOpacity onPress={() => setIsVisible(false)}>
-                <Text style={modalStyles.text}>Cancel Order</Text>
+                <Text style={modalStyles.text}>{strings.cancelOrder}</Text>
               </TouchableOpacity>
             </View>
           )}

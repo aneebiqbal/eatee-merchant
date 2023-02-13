@@ -19,7 +19,6 @@ export const OrderStatus = Object.freeze({
   Cancelled: 5,
 });
 
-
 const OrdersScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {
@@ -61,7 +60,6 @@ const OrdersScreen = ({navigation}) => {
     }
   };
 
-
   const {ordersStatus, ordersMeta, orders} = useSelector(
     ({OrderHistoryState}) => OrderHistoryState,
   );
@@ -89,18 +87,11 @@ const OrdersScreen = ({navigation}) => {
           {/* {currentTab === 1 && } */}
       </View>
 
-      <View horizontal={true} style={{
-          flexDirection: 'row',
-          backgroundColor: '#1A1E22',
-          justifyContent: 'center',
-          // justifyContent: 'space-between',
-          width: '100%',
-          }}
-      >
+      <View horizontal={true} style={styles.StatusesBar}>
         {
           ['All', 'Pending', 'Preparing', 'Accepted', 'Completed', 'Cancelled'].map((filterLabel)=> (
             <ButtonIconOrText label={filterLabel} 
-            backgroundColor={OrderStatus[filterLabel] === orderStatusTypeId ? Colors.primary : Colors.lightGra}
+            backgroundColor={OrderStatus[filterLabel] === orderStatusTypeId ? Colors.primary : Colors.blackCoral}
             onPress={()=> {
               setOrderStatusTypeId(OrderStatus[filterLabel])
             }} 
@@ -109,11 +100,7 @@ const OrdersScreen = ({navigation}) => {
           />))
         } 
       </View>
-      <View 
-        style={{
-          flexDirection: 'row',
-         }}
-      >
+      <View style={styles.fdrow}>
         <SearchField 
          style={styles.searchField}
          onChange={setSearchText}

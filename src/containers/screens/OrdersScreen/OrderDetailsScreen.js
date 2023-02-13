@@ -9,6 +9,7 @@ import { Divider } from 'react-native-paper';
 import SelectDropdown from 'react-native-select-dropdown'
 import { WP } from '../../../utils';
 import OrderChangeModal from './OrderStatusChangeModal';
+import strings from '../../../constants/strings';
 
   const propTypes = {
     navigation: PropTypes.shape({
@@ -21,10 +22,6 @@ import OrderChangeModal from './OrderStatusChangeModal';
 const OrderDetailsScreen = ({navigation,route: {
   params: {order}
 }}) => {
-  console.log(order)
-
-  // const [selectedValue, setSelectedValue] = useState("Java");
-  // const [modalVisible, setModalVisible] = useState(false);
   const [orderStatusTypeId, setOrderStatusTypeId] = useState(1);
   const [isVisible, setIsVisible] = useState(false);  const closeModal = () => setShowItemDetails(false)
   const [showItemDetails, setShowItemDetails] = useState(false);
@@ -39,20 +36,8 @@ const OrderDetailsScreen = ({navigation,route: {
       <CaptionedText heading={item.heading} text={item.text} />
     </View>
   )
-
-  const options = ["Pending", "Preparing", "Shipping", "Completed", "Cancelled"]
-
-  // const options = [
-  //   { index: "Pending", value: "Pending" },
-  //   { index: "Preparing", value: "Preparing" },
-  //   { index: "Accepted", value: "Accepted" },
-  //   { index: "Completed", value: "Completed" },
-  //   { index: "Cancelled", value: "Cancelled" }
-  // ];
-
   return (
-    <SafeAreaView style={[styles.container,{backgroundColor: Colors.lightGra}]}>
-      <ScrollView>
+    <SafeAreaView style={[styles.container,styles.backgroundColor]}>
         <Header
           logo
           user
@@ -61,10 +46,10 @@ const OrderDetailsScreen = ({navigation,route: {
           left
           title={
             <View style={styles.headerStyle}>
-              <Text style={styles.white}>Order no: {order?.orderNumber}</Text>
-              <Text style={styles.white}>ORDER DETAILS</Text>
+              <Text style={styles.white}>{strings.orderId} {order?.orderNumber}</Text>
+              <Text style={styles.white}>{strings.orderDetails}</Text>
             </View>
-            }
+          }
           right={(
                <ButtonIconOrText
                 label={order.orderStatus}
@@ -77,59 +62,60 @@ const OrderDetailsScreen = ({navigation,route: {
               /> 
           )}
         />
-        <View style={styles.trakingComponent}>
-          <Tracking />
-        </View>
-        <View style={styles.mapViewHeader}>
-            <View style={styles.mapView}>
-              <MapsView order={order}/>
-            </View>
-            <View style={styles.mapView}>
-              <CustomerDetailCard order={order}/>
-            </View>
-        </View>
-        {/* <View style={{margin: 16}}>
-          <RiderDetailsRowCard/>
-        </View> */}
+        <ScrollView>
+          <View style={styles.trakingComponent}>
+            <Tracking orderDetail={order}/>
+          </View>
+          <View style={styles.mapViewHeader}>
+              <View style={styles.mapView}>
+                <MapsView order={order}/>
+              </View>
+              <View style={styles.mapView}>
+                <CustomerDetailCard order={order}/>
+              </View>
+          </View>
 
-        <TableRow
-          rowItems={[
-            {name: 'Item', width: '45%'}, 
-            {name: 'Quantity', width: '20%'}, 
-            {name: 'Price', width: '15%'}, 
-            {name: 'Total Price', width: '20%'}, 
-            // {name: '', width: '12%' }
-          ]}
-        />
-        {
-          order.items.map((item, index)=> {
-            return (
-              <TableRow 
-                key={index}
-                rowItems={[
-                  {
-                    column: (itemImage({
-                      heading: item.name,
-                      text: 'Lorem ipsum text'
-                    })), 
-                    width: '50%'
-                  },
-                  {name: item.quantity, width: '20%'}, 
-                  {name: item.price, width: '15%'}, 
-                  {name: item.price, width: '20%'}, 
-                  // {column: (<Image
-                  //   source={Images.cross}
-                  //   style={{
-                  //     height: 20,
-                  //     width: 20,
-                  //   }}
-                  // />), width: '10%' }
-                ]}
-              />
-            )
-          })
-        }
-        
+          {/* <View style={styles.margin16}>
+            <RiderDetailsRowCard/>
+          </View> */}
+
+          <TableRow
+            rowItems={[
+              {name: 'Item', width: '45%'}, 
+              {name: 'Quantity', width: '20%'}, 
+              {name: 'Price', width: '15%'}, 
+              {name: 'Total Price', width: '20%'}, 
+              // {name: '', width: '12%' }
+            ]}
+          />
+          {
+            order.items.map((item, index)=> {
+              return (
+                <TableRow 
+                  key={index}
+                  rowItems={[
+                    {
+                      column: (itemImage({
+                        heading: item.name,
+                        text: 'Lorem ipsum text'
+                      })), 
+                      width: '50%'
+                    },
+                    {name: item.quantity, width: '20%'}, 
+                    {name: item.price, width: '15%'}, 
+                    {name: item.price, width: '20%'}, 
+                    // {column: (<Image
+                    //   source={Images.cross}
+                    //   style={{
+                    //     height: 20,
+                    //     width: 20,
+                    //   }}
+                    // />), width: '10%' }
+                  ]}
+                />
+              )
+            })
+          }
       </ScrollView>
       <OrderChangeModal isVisible={showItemDetails} closeModal={closeModal} navigation={navigation} order={order}/>
     </SafeAreaView>

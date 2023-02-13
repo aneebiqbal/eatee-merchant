@@ -2,10 +2,6 @@ import React from 'react';
 import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {Colors, Fonts, Images} from '../../theme';
 import {HP} from '../../utils/responsive';
-import BackIcon from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Divider} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
 
 const propTypes = {};
 

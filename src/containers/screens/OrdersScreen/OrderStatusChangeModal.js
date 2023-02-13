@@ -63,15 +63,13 @@ const OrderChangeModal = ({
     >
       <SafeAreaView style={styles.flex1}>
         <View style={styles.changeStatusModalContainer}>
-            <Text style={{fontSize: 22, fontWeight: '600'}}>Change your Order Status</Text>
-            <Text style={{fontSize: 20, fontWeight: '400', paddingTop: 20}}>Status:</Text>
-            <View style={{marginTop: 20}}>
+            <Text style={styles.headingText}>{strings.changeYourOrderStatus}</Text>
+            <Text style={styles.heading2Text}>{strings.status}</Text>
+            <View style={styles.mt20}>
                 <SelectDropdown
-                    buttonStyle={{
-                    width: WP(20),
-                    }}
+                    buttonStyle={styles.buttonStyleWidth}
                     data={options}
-                    defaultButtonText='Change Status'
+                    defaultButtonText={strings.changeStatus}
                     defaultValue='Pending'
                     onSelect={(selectedItem, index) => {
                     console.log(selectedItem, index+1)
@@ -92,71 +90,31 @@ const OrderChangeModal = ({
         </View>
 
         <View style={styles.changeStatusModalContainer}>
-            <Text style={{fontSize: 20, fontWeight: '400', paddingTop: 20}}>Preparing Minutes</Text>
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                borderWidth: 1,
-                borderColor: 'gray',
-                padding: 10,
-                borderRadius: 5,
-                margin: 10,
-                justifyContent:"center"
-            }}>
-                {/* <InputField
-                    leftIcon={'clock'}
-                    placeholder={'Preparing Minutes'}
-                    setText={handleChange}
-                    value={searchText}
-                /> */}
+            <Text style={styles.preparingMinutesText}>{strings.preparingMinutes}</Text>
+            <View style={styles.Textinput}>
                 <TextInput
                     value={prepairingMinutes}
                     onChangeText={handlePreparingMinutes}
-                    placeholder={'Preparing Minutes'}
-                    style={{
-                        flex: 1,
-                        padding: 10,
-                    }}
+                    placeholder={strings.preparingMinutes}
+                    style={styles.InputStyle}
                 />
             </View>
         </View>
-
-        <View style={styles.changeStatusModalContainer}>
-            <Text style={{fontSize: 20, fontWeight: '400', paddingTop: 20}}>Delivery Minutes</Text>
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                borderWidth: 1,
-                borderColor: 'gray',
-                padding: 10,
-                borderRadius: 5,
-                margin: 10,
-                justifyContent:"center"
-            }}>
-                {/* <InputField
-                    leftIcon={'clock'}
-                    placeholder={'Delivery Minutes'}
-                    setText={handleChange}
-                    value={searchText}
-                /> */}
-                   <TextInput
-                        value={deliveryMinutes}
-                        onChangeText={handleDeliveryMinutes}
-                        placeholder={'Delivery Minutes'}
-                        style={{
-                            flex: 1,
-                            padding: 10,
-                        }}
-                    />
+         <View style={styles.changeStatusModalContainer}>
+            <Text style={styles.preparingMinutesText}>{strings.deliveryMinutes}</Text>
+            <View style={styles.Textinput}>
+                <TextInput
+                    value={deliveryMinutes}
+                    onChangeText={handleDeliveryMinutes}
+                    placeholder={strings.deliveryMinutes}
+                    style={styles.InputStyle}
+                />
             </View>
         </View>
-
-        <View>
-            <FullwidthButton
-                label={'Submit'}
-                onPress={handleSubmitEvent}
-            />
-        </View>
+        <FullwidthButton
+            label={strings.submit}
+            onPress={handleSubmitEvent}
+        />
        
       </SafeAreaView>
     </Modal>

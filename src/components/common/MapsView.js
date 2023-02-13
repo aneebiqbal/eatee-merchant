@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Linking } from 'react-native';
+import { Linking, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 const MapsView = (order) => {
@@ -17,7 +17,7 @@ const MapsView = (order) => {
 debugger;
   return (
     <MapView
-        style={{ flex: 1, borderRadius: 9 }}
+        style={styles.container}
         // provider={PROVIDER_GOOGLE}
         initialRegion={{
           latitude: order?.order.customerAddress.latitude,
@@ -41,4 +41,10 @@ debugger;
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    borderRadius: 9
+  },
+});
 export default MapsView;

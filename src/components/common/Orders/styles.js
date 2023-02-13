@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     container: {
         margin: 20,
         paddingHorizontal: 28,
-        borderRadius: 9
+        borderRadius: 9,
     },
     childContainer: {
         paddingVertical: 24,
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     CardTextStyle: {
-        width: '80%',
+        width: WP(70),
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
@@ -44,6 +44,9 @@ export const styles = StyleSheet.create({
         height: HP(4),
         marginRight: 16,
         borderRadius: 50
+    },
+    ml10: {
+        marginLeft: 10
     },
     
 });

@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../theme'
+import { HP, WP } from '../../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -53,8 +54,8 @@ export const styles = StyleSheet.create({
     flex: 0.5
   },
   imagePCStyle: {
-    height: 1200,
-    width: 350,
+    height: HP(100),
+    width: WP(40),
   },
   inputFieldContainer: {
     marginTop: 70
@@ -66,6 +67,5 @@ export const styles = StyleSheet.create({
     flex: 0.5,
     height: '100%',
     position: 'relative',
-  }
-
+  },
 });
