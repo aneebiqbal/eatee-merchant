@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import { Colors } from '../../../theme';
+import { HP, WP } from '../../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,10 +16,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   searchField: {
-    margin: 20,
+    margin: 10,
     width: '30%',
     height: '80%',
-    borderRadius: 40
+    borderRadius: 40,
   },
   filterStyle: {
     flexDirection: 'row'
@@ -32,8 +33,8 @@ export const styles = StyleSheet.create({
     margin: 0,
     flex: 1,
     backgroundColor: 'white',
-    width: '65%',
-    height: '100%',
+    width: WP(65),
+    height: HP(100),
     alignSelf: 'flex-end'
   },
   ChangeOrderStatusModal: {
@@ -61,6 +62,8 @@ export const styles = StyleSheet.create({
   },
 fdrow: {
   flexDirection: 'row',
+  height: HP(6),
+  marginHorizontal: 10
 },
 imgStyle: {
   width: 36,
@@ -89,8 +92,8 @@ mapViewHeader: {
   justifyContent: 'space-between'
 },
 mapView: {
-  height: '100%',
-  width: '49%',
+  height: HP(25),
+  width: WP(47),
   backgroundColor: 'white',
   padding: 16,
   borderRadius: 8
@@ -124,4 +127,54 @@ changeStatusModalContainer: {
   alignItems:'center',
   paddingVertical: 30
 },
+headingText: {
+  fontSize: 22, 
+  fontWeight: '600'
+},
+heading2Text: {
+  fontSize: 20, 
+  fontWeight: '400', 
+  paddingTop: 20
+},
+mt20 : {
+  marginTop: 20
+},
+buttonStyleWidth: {
+  width: WP(20),
+},
+preparingMinutesText: {
+  fontSize: 20, 
+  fontWeight: '400', 
+  paddingTop: 20
+},
+Textinput: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderWidth: 1,
+  borderColor: 'gray',
+  padding: 10,
+  borderRadius: 5,
+  margin: 10,
+  justifyContent:"center"
+},
+InputStyle: {
+  flex: 1,
+  padding: 10,
+},
+StatusesBar: {
+  flexDirection: 'row',
+  backgroundColor: '#1A1E22',
+  justifyContent: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
+},
+primaryColor: {
+  color: Colors.primary
+},
+backgroundColor: {
+  backgroundColor: Colors.lightGra
+},
+margin16: {
+  margin: 16
+}
 });
