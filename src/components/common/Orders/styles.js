@@ -48,5 +48,11 @@ export const styles = StyleSheet.create({
     ml10: {
         marginLeft: 10
     },
+    menuItemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 20
+    },
     
 });

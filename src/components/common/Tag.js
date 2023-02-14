@@ -16,7 +16,7 @@ const Tag = ({
   const button = (
     <View style={[
       styles.container,
-      type === 'success' ? { backgroundColor: Colors.success } : {},
+      type === 'success' ? { backgroundColor: Colors.success } : {backgroundColor: Colors.secGrayMid},
     ]}> 
       <Text style={[type === 'success' ? { color: Colors.white } : {color: Colors.black}]}>{text}</Text>
     </View>

@@ -3,46 +3,22 @@ import React from 'react'
 import {Colors} from '../../theme';
 import { ProgressSteps, ProgressStep, StepIndicator } from 'react-native-progress-steps';
 import strings from '../../constants/strings';
+import Tag from './Tag';
 
 const Tracking = (orderDetail) => {
-  const getStepNumber = () => {
-    switch (orderDetail?.orderDetail.orderTypeId) {
-      case 0:
-          switch (orderDetail?.orderDetail.orderStatus) {
-            case "Pending":
-              return 1
-            case "Preparing":
-              return 2;
-            case "Shipping":
-              return 3;
-            case "Delivered":
-              return 4;
-        } 
-      case 1:
-        switch (orderDetail?.orderDetail.orderStatus) {
-          case "Pending":
-            return 1
-          case "Preparing":
-            return 2;
-          case "Shipping":
-            return 3;
-          case "Delivered":
-            return 4;
-        } 
-        break;
-      }
-  }
+  debugger;
+  if (orderDetail.orderDetail.orderStatusTypeId < 4) {
 
   return (
     <View style={styles.container}>
-      <ProgressSteps 
+      <ProgressSteps
           progressBarColor={Colors.lightGra} 
           activeStepIconBorderColor={Colors.primary}
           completedProgressBarColor={Colors.lightGra}
           labelColor={Colors.primaryGrayMid}
           activeLabelColor={Colors.black}
           borderWidth={1}
-          activeStep={getStepNumber()}
+          activeStep={orderDetail?.orderDetail.orderStatusTypeId}
           labelFontSize={10}
           activeLabelFontSize={14}
       >
@@ -51,8 +27,12 @@ const Tracking = (orderDetail) => {
         <ProgressStep label={orderDetail?.orderDetail.orderTypeId == 0 ? strings.shipping : strings.ready} removeBtnRow/>
         <ProgressStep label={orderDetail?.orderDetail.orderTypeId == 0 ? strings.delivered : strings.pickUp} removeBtnRow/>
       </ProgressSteps>
-    </View>
-  )
+    </View> 
+  )} else{
+    return(
+      <></>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -60,6 +40,13 @@ const styles = StyleSheet.create({
     flex:1, 
     flexDirection:'row', 
     width: '100%'
+  },
+  tagContainer: {
+    flex:1, 
+    flexDirection:'row', 
+    width: '100%',
+    alignItems:"center",
+    justifyContent:'center'
   }
 });
 

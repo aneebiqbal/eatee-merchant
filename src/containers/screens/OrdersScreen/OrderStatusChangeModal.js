@@ -1,7 +1,6 @@
-import { View, SafeAreaView, Text, TextInput, StyleSheet } from 'react-native'
+import { View, SafeAreaView, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import { FullwidthButton, InputField } from '../../../components/common';
-import { Colors } from '../../../theme';
+import { FullwidthButton } from '../../../components/common';
 import Modal from "react-native-modal";
 import { styles } from './styles';
 import SelectDropdown from 'react-native-select-dropdown'
