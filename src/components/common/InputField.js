@@ -52,7 +52,7 @@ const InputField = ({
 
 const styles = StyleSheet.create({
   inputStyle: {
-    marginBottom: HP('1'),
+    marginBottom: HP('3'),
     backgroundColor: '#fff',
     color: Colors.placeholder,
   },

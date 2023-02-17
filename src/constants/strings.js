@@ -165,4 +165,5 @@ export default {
   ready: 'Ready',
   delivered: 'Delivered',
   pickUp: 'PickUp',
+  addItem: 'Add Item',
 };

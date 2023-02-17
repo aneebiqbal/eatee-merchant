@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   ChangePasswordState: ChangePasswordReducer,
   OrderHistoryState: getOrderHistoryReducer,
   ChangeOrderStatusState: changeOrderStatusReducer,
+
 });
 
 export default rootReducer;
