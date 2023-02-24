@@ -27,17 +27,16 @@ import { uploadImage } from "../../../components/UpdateNewMenu";
 import {
   createItemSuccess,
   createNewItem,
-  getCatogeriesByMerchantId
+  getCatogeriesByMerchantId,
 } from "../../../actions/CreateItemAction";
 import { useDispatch } from "react-redux";
 import Toast from "react-native-simple-toast";
 import strings from "../../../constants/strings";
-import { useQuery } from 'react-query';
-import {Picker} from '@react-native-picker/picker';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { useQuery } from "react-query";
+import { Picker } from "@react-native-picker/picker";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-
-const CreateNewMenuScreen = () => {
+const CreateNewMenuScreen = ({navigation}) => {
   const { user } = useSelector(({ AccountState }) => AccountState);
   // const [itemDetail,setItemDetail]=useState([{sizeTypeId:30,price:100}]);
   const [imageUrl, setImage] = useState();
@@ -50,7 +49,7 @@ const CreateNewMenuScreen = () => {
     description: "",
     name: "",
     foodCatogeryType: "",
-    isActive: true
+    isActive: true,
   };
 
   const sizeOptions = ["Small", "Medium", "Large"];
@@ -63,12 +62,12 @@ const CreateNewMenuScreen = () => {
   };
 
   const onSuccess = (body) => {
+    debugger;
     Toast.show("Item Created Successfully");
     dispatch(createItemSuccess(body));
   };
 
   const getImage = async () => {
-    debugger;
     try {
       const result = await launchImageLibrary({
         mediaType: "photo",
@@ -84,8 +83,10 @@ const CreateNewMenuScreen = () => {
     }
   };
 
-  const  categories  = useQuery('categories', () => getCatogeriesByMerchantId(user.accessToken, user.merchantId));
-debugger;
+  const categories = useQuery("categories", () =>
+    getCatogeriesByMerchantId(user.accessToken, user.merchantId)
+  );
+  debugger;
   return (
     <SafeAreaView style={styles.flex1}>
       <Header user left />
@@ -93,7 +94,9 @@ debugger;
         <Text style={styles.addItemText}>{strings.addItem}</Text>
       </View>
 
-      <ScrollView style={[ApplicationStyles.shadow, styles.inputFieldContainer]}>
+      <ScrollView
+        style={[ApplicationStyles.shadow, styles.inputFieldContainer]}
+      >
         <View
           style={{
             marginHorizontal: 20,
@@ -102,6 +105,58 @@ debugger;
             bottom: 10,
           }}
         >
+          <View style={styles.profileContainer}>
+            <TouchableOpacity
+              onPress={async () => {
+                await getImage();
+              }}
+            >
+              <ImageBackground
+                source={
+                  imageUrl !== null && imageUrl !== undefined && imageUrl !== ""
+                    ? { uri: imageUrl }
+                    : require("../../../assets/images/person.jpg")
+                }
+                style={styles.profilePic}
+              >
+                <View
+                  style={{
+                    position: "absolute",
+                    right: -15,
+                    bottom: 0,
+                    zIndex: 8,
+                    borderRadius: 30,
+                    backgroundColor: Colors.placeholder,
+                    opacity: 0.5,
+                    width: 35,
+                    height: 35,
+                  }}
+                />
+                <View
+                  style={{
+                    position: "absolute",
+                    right: -10,
+                    bottom: 5,
+                    zIndex: 10,
+                  }}
+                >
+                  <Icon name={"camera"} type={"entypo"} color={Colors.black} />
+                </View>
+
+                {loading && (
+                  <Spinner
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      top: 0,
+                    }}
+                  />
+                )}
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
           <Formik
             initialValues={initialValues}
             onSubmit={(values) => {
@@ -123,121 +178,80 @@ debugger;
                       push({ price: "", sizeTypeId: "", quantity: "" });
                     };
                     return (
-                      <View style={styles.formContainer}>
+                      <View style={{}}>
                         <View style={styles.inputFieldView}>
-                          <View style={{ flex: 0.5 }}>
+                          <View style={{ flex: 1 }}>
                             <InputField
                               placeholder="Name"
                               setText={handleChange(`name`)}
                               text={values.name}
                             />
                           </View>
-                          <View style={{ flex: 0.5, marginHorizontal: 10 }}>
-                            {/* <InputField
-                              placeholder="Category"
-                              setText={handleChange(`foodCatogeryType`)}
-                              text={values.foodCatogeryType}
-                            /> */}
-                            {/* <Picker
-                              selectedValue={values.foodCatogeryType}
-                              onValueChange={(itemValue, itemIndex) =>
-                                setFieldValue(`itemDetails.${index}.foodCatogeryType`, itemValue)
-                              }>
-                              {categories?.map((category, index) => {
-                                debugger;
-                                return (
-                                  <Picker.Item key={category.id} label={category.name} value={category.id} />
-                                );
-                              })}
-                            </Picker> */}
+                          {/* {categories?.data.result.length && ( */}
+                            <View style={{ flex: 1, marginHorizontal: 10 }}>
                               <Picker
                                 selectedValue={values.foodCatogeryType}
                                 style={{
                                   width: WP(30),
                                 }}
-                                onValueChange={(itemValue, itemIndex) =>{
+                                onValueChange={(itemValue, itemIndex) => {
                                   debugger;
-                                  setFieldValue('foodCatogeryType', itemValue)
-                                }
-                                }>
-                                  <Picker.Item key={0} label={'Select category'} value={''} />
-                                {categories?.data?.result.map((category, index) => (
-                                  <Picker.Item key={category.id} label={category.name} value={category.id} />
-                                ))}
-                              </Picker>
-                          </View>
-                          <View style={styles.profileContainer}>
-                            <TouchableOpacity
-                              onPress={async () => {
-                                await getImage();
-                              }}
-                            >
-                              <ImageBackground
-                                source={
-                                  imageUrl !== null &&
-                                  imageUrl !== undefined &&
-                                  imageUrl !== ""
-                                    ? { uri: imageUrl }
-                                    : require("../../../assets/images/person.jpg")
-                                }
-                                style={styles.profilePic}
+                                  setFieldValue("foodCatogeryType", itemValue);
+                                }}
                               >
-                                <View
-                                  style={{
-                                    position: "absolute",
-                                    right: -15,
-                                    bottom: 0,
-                                    zIndex: 8,
-                                    borderRadius: 30,
-                                    backgroundColor: Colors.placeholder,
-                                    opacity: 0.5,
-                                    width: 35,
-                                    height: 35,
-                                  }}
+                                <Picker.Item
+                                  key={0}
+                                  label={"Select category"}
+                                  value={""}
                                 />
-                                <View
-                                  style={{
-                                    position: "absolute",
-                                    right: -10,
-                                    bottom: 5,
-                                    zIndex: 10,
-                                  }}
-                                >
-                                  <Icon
-                                    name={"camera"}
-                                    type={"entypo"}
-                                    color={Colors.black}
-                                  />
-                                </View>
-
-                                {loading && (
-                                  <Spinner
-                                    style={{
-                                      position: "absolute",
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      top: 0,
-                                    }}
-                                  />
+                                {categories?.data?.result.map(
+                                  (category, index) => (
+                                    <Picker.Item
+                                      key={category.id}
+                                      label={category.name}
+                                      value={category.id}
+                                    />
+                                  )
                                 )}
-                              </ImageBackground>
-                            </TouchableOpacity>
-                          </View>
+                              </Picker>
+                            </View>
+                          {/* )} */}
                         </View>
-                        <View style={{ width: "40%", marginHorizontal: 10, flexDirection:'row', alignItems:'center' }}>
-                          <InputField
-                            placeholder="Description"
-                            multiline
-                            setText={handleChange(`description`)}
-                            text={values.description}
-                          />
-                          <View style={{ marginLeft: 20}}>
-                            <Text>Is Active?</Text>
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginHorizontal: 20,
+                            marginVertical: 20,
+                            justifyContent: "space-evenly",
+                            alignItems: "center",
+                            // right: 40
+                          }}
+                        >
+                          <View style={{ flex: 1, justifyContent: "center" }}>
+                            <InputField
+                              placeholder="Description"
+                              multiline
+                              setText={handleChange(`description`)}
+                              text={values.description}
+                            />
+                          </View>
+                          <View
+                            style={{
+                              flex: 1,
+                              marginLeft: 10,
+                              alignItems: "center",
+                            }}
+                          >
+                            <Text style={{ fontSize: 17, fontWeight: "500" }}>
+                              Is Active?
+                            </Text>
                             <BouncyCheckbox
                               isChecked={values.isActive}
                               fillColor="#4ECCA3"
-                              onPress={() => setFieldValue('isActive', !values.isActive)}
+                              onPress={() =>
+                                setFieldValue("isActive", !values.isActive)
+                              }
+                              size={35}
                             />
                           </View>
                         </View>
@@ -252,6 +266,7 @@ debugger;
                             style={{
                               fontWeight: "700",
                               fontSize: 22,
+                              marginHorizontal: 10,
                             }}
                           >
                             Item Details
@@ -331,15 +346,19 @@ debugger;
                   }}
                 </FieldArray>
                 <View
-                  style={{ flexDirection: "row",}}
+                  style={{
+                    flexDirection: "row",
+                    marginVertical: HP(5),
+                    alignItems: "center",
+                  }}
                 >
                   <FullwidthButton
-                    label={'Save Changes'}
+                    label={"Save Changes"}
                     onPress={handleSubmit}
                     loading={loading}
                     style={{
                       height: HP(5),
-                      width: WP(30),
+                      width: WP(50),
                     }}
                   />
                 </View>
@@ -354,15 +373,13 @@ debugger;
 
 const styles = StyleSheet.create({
   formContainer: {
-    flexDirection: "column",
-    flexWrap: "wrap",
     marginBottom: 10,
   },
   itemDetailContainer: {
     flexDirection: "row",
-    marginRight: 10,
     marginBottom: 10,
     alignItems: "center",
+    marginHorizontal: 20,
   },
   priceContainer: {
     marginRight: 20,
@@ -389,7 +406,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
+    marginHorizontal: 20,
   },
   addButtonText: {
     fontSize: 24,
@@ -405,10 +422,9 @@ const styles = StyleSheet.create({
     height: HP(4),
   },
   profileContainer: {
-    marginLeft: WP(10),
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    marginLeft: WP(1),
+    margin: 20,
+    flexDirection: "row",
   },
   profilePic: {
     height: 120,
@@ -434,9 +450,8 @@ const styles = StyleSheet.create({
   },
   inputFieldView: {
     flexDirection: "row",
-    marginHorizontal: 10,
-    justifyContent: "space-evenly",
-    paddingTop: 20,
+    marginHorizontal: 20,
+    justifyContent: "space-between",
     alignItems: "center",
   },
 });

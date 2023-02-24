@@ -1,87 +1,84 @@
-import { View, Text, Image, Switch, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native'
-import React, { useState } from 'react'
-import { ApplicationStyles, Images } from '../../theme'
-import { Icon } from 'react-native-elements'
-import SearchField from './SearchField'
-import ButtonIconOrText from './ButtonIconOrText'
+import {
+  View,
+  Text,
+  Image,
+  Switch,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import { ApplicationStyles, Images } from "../../theme";
+import { Icon } from "react-native-elements";
+import SearchField from "./SearchField";
+import ButtonIconOrText from "./ButtonIconOrText";
+import { useDispatch, useSelector } from "react-redux";
+import InventoryItemsCard from "./InventoryItemCard";
+import Status from "../../constants/status";
+import Spinner from "./Spinner";
+import PaginatedList from "./PaginatedList";
+import { getItemResetStates, getItems } from "../../actions/GetItemAction";
+import InventoryItemCard from "./InventoryItemCard";
+import { HP } from "../../utils";
 
-const InventoryMenu = ({navigation}) => {
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+const InventoryMenu = ({ navigation }) => {
+  const dispatch = useDispatch();
+
+  const { items, itemsStatus } = useSelector(
+    ({ GetItemState }) => GetItemState
+  );
+  console.log(items, itemsStatus);
+
+  const { user } = useSelector(({ AccountState }) => AccountState);
+
+  useEffect(() => {
+    dispatch(getItems(user.accessToken, user.merchantId));
+    return () => dispatch(getItemResetStates());
+  }, [user.accessToken, user.merchantId, dispatch]);
+  debugger;
+  const renderOrderItem = ({ item }) => {
+    console.log(item);
+
+    return <InventoryItemCard object={item} navigation={navigation} />;
+  };
   return (
-    <ScrollView style={{backgroundColor: '#DDDDDD', height: '100%'}}>
-    <SafeAreaView >
-        <View style={{flexDirection:"row", justifyContent:'space-between'}}>
-          <SearchField
-            placeholder={'Search'}
-            style={{
-              margin: 20,
-              width: '30%',
-              height: 48,
-              borderRadius: 48
-            }} onChange={()=>console.log('test')}
-          />
-          <ButtonIconOrText
-            label={'Craete New'}
-            style={{
-              height: 55,
-              marginTop: 15,
-              marginRight: 35,
-              borderRadius: 6
-            }}
-            iconDirection="right"
-            iconName={'plus'}
-            iconType={'Entypo'}
-            onPress={() => navigation.navigate('CreateNewMenuScreen')}
-          />
-        </View>
+    <SafeAreaView style={{ backgroundColor: "#DDDDDD", flex: 1 }}>
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <SearchField
+          placeholder={"Search"}
+          style={{
+            margin: 20,
+            width: "30%",
+            height: 48,
+            borderRadius: 48,
+          }}
+          onChange={() => console.log("test")}
+        />
+        <ButtonIconOrText
+          label={"Craete New"}
+          style={{
+            height: 55,
+            marginTop: 15,
+            marginRight: 35,
+            borderRadius: 6,
+          }}
+          iconDirection="right"
+          iconName={"plus"}
+          iconType={"Entypo"}
+          onPress={() => navigation.navigate("CreateNewMenuScreen")}
+        />
+      </View>
+      {itemsStatus === Status.LOADING && !items.length ? (
+        <Spinner />
+      ) : (
+        <PaginatedList
+          data={items}
+          renderer={renderOrderItem}
+          loading={itemsStatus === Status.LOADING}
+        />
+      )}
+    </SafeAreaView>
+  );
+};
 
-       <View style={[ApplicationStyles.shadow, {backgroundColor:"white", marginHorizontal: 25, padding: 35, borderRadius: 6, flexDirection: 'row', justifyContent: 'space-between'}]}>
-            <View style={{flexDirection:'row'}}>
-              <Image
-                  source={Images.food}
-                  style={{
-                    height: 40,
-                    width: 40,
-                  }}
-              />
-              <View style={{ flexDirection:"column", paddingLeft: 10}}>
-                <Text style={{width: 160, color: '#F33810', fontWeight: '700', fontSize: 14}}>Salmon/Shake Dragon</Text>
-                <Text>Extra Spicy</Text>
-              </View>
-            </View>
-
-            <View style={{ flexDirection:"column" }}>
-              <Text style={{width: 110, fontWeight: '600', fontSize: 14}}>Cheese</Text>
-              <Text>Category name</Text>
-            </View>
-
-            <View style={{ flexDirection:"column"}}>
-              <Text style={{width: 160, fontWeight: '600', fontSize: 14}}>Cheese</Text>
-              <Text>Category name</Text>
-            </View>
-
-              <View style={{flexDirection:"row", marginHorizontal: 10, alignItems:"center",}}>
-                <View style={{right: 40}}>
-                  <Switch
-                      trackColor={{ false: "white", true: "#F33810" }}
-                      thumbColor={isEnabled ? "white" : "white"}
-                      ios_backgroundColor="white"
-                      onValueChange={toggleSwitch}
-                      value={isEnabled}
-                  />
-                </View>
-                <TouchableOpacity style={{right: 20}}>
-                  <Icon name="pencil" type="font-awesome" size={25} color="#0EBE7E"  />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="delete" type="material" size={25} color="#FF0000"  />
-                </TouchableOpacity>
-              </View>
-         </View>
-      </SafeAreaView>
-      </ScrollView>
-  )
-}
-
-export default InventoryMenu
+export default InventoryMenu;

@@ -26,6 +26,7 @@ import PaginatedList from './PaginatedList'
 import InventoryCategory from './InventoryCategory'
 import InventoryMenu from './InventoryMenu'
 import TableRow from './TableRow'
+import InventoryItemCard from './InventoryItemCard'
 
 export {
   InputField,
@@ -55,5 +56,6 @@ export {
   PaginatedList,
   InventoryCategory,
   InventoryMenu,
-  TableRow
+  TableRow,
+  InventoryItemCard
 };

@@ -27,8 +27,8 @@ export const createItemSuccess = data => {
         setLoading(false);
         if (data.status === 200) {
           if (data) {
-            debugger;
             onSuccess(values);
+            Toast.show("Item Created Successfully");
           }
         } else {
           if (data.status === 400) {
@@ -54,6 +54,5 @@ export const createItemSuccess = data => {
       }
     });
     const data = await response.json();
-    debugger;
     return data;
   };

@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   searchField: {
     margin: 10,
     width: '30%',
-    height: '80%',
+    height: '100%',
     borderRadius: 40,
   },
   filterStyle: {
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
   },
 fdrow: {
   flexDirection: 'row',
-  height: HP(6),
+  height: HP(3),
   marginHorizontal: 10
 },
 imgStyle: {

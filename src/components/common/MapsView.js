@@ -14,7 +14,6 @@ const MapsView = (order) => {
       }
     });
   };
-debugger;
   return (
     <MapView
         style={styles.container}

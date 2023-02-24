@@ -3,7 +3,7 @@ import {
     ORDER_STATUS_FAILURE
 } from '../constants/action-types';
 import Toast from 'react-native-simple-toast';
-import {patchFunctionWithAuthToken, postFunctionWithAuthToken} from '../api';
+import {postFunctionWithAuthToken} from '../api';
 import {baseUrl} from '../config';
 
 export const orderStatusChange = data => {

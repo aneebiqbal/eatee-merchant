@@ -60,12 +60,11 @@ const OrdersScreen = ({navigation}) => {
     }
   };
 
-  const {ordersStatus, ordersMeta, orders} = useSelector(
+  const {ordersStatus, ordersMeta, orders: { result }} = useSelector(
     ({OrderHistoryState}) => OrderHistoryState,
   );
 
   const renderOrderItem = ({ item }) => {
-    console.log(item)
     return (<OrderItem 
       order={item}
       navigation={navigation}
@@ -107,11 +106,11 @@ const OrdersScreen = ({navigation}) => {
          value={searchText}
         />
       </View>
-      {ordersStatus === Status.LOADING && !orders.length ? (
+      {ordersStatus === Status.LOADING && !result?.length ? (
           <Spinner />
         ) : (
           <PaginatedList
-            data={orders}
+            data={result}
             renderer={renderOrderItem}
             meta={ordersMeta}
             fetchMore={() => fetchMore(fetchOrderHistory, ordersMeta)}
