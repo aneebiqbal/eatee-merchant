@@ -4,7 +4,6 @@ import {styles} from './styles';
 import { FiltersHeader, Header, InventoryCategory, InventoryMenu } from '../../../components/common';
 import { Images } from '../../../theme';
 
-
 const InventoryScreen = ({navigation}) => {
   const [currentTab, setCurrentTab] = useState(0)
 
@@ -24,10 +23,10 @@ const InventoryScreen = ({navigation}) => {
         <FiltersHeader
           items={filterItems}
         />
-        <View style={styles.container}>
+        <View  style={styles.container}>
             {currentTab === 0 && <InventoryCategory/>}
             {currentTab === 1 && <InventoryMenu navigation={navigation}/>}
-            {currentTab === 2 && <Text>Tab 2</Text>}
+            {currentTab === 2 && <Text>tab 2</Text>}
             {currentTab === 3 && <Text>Tab 3</Text>}
             {currentTab === 4 && <Text>Tab 4</Text>}
         </View>

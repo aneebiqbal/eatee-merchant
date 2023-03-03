@@ -13,10 +13,10 @@ const CustomerDetailCard = ({order}) => {
         <View style={{ flexDirection: 'row' }}>
             <Image
                 source={
-                  order.createdBy.imageUrl !== null &&
-                  order.createdBy.imageUrl !== undefined &&
-                  order.createdBy.imageUrl !== ''
-                    ? {uri: order.createdBy.imageUrl}
+                  order.createdBy?.imageUrl !== null &&
+                  order.createdBy?.imageUrl !== undefined &&
+                  order.createdBy?.imageUrl !== ''
+                    ? {uri: order.createdBy?.imageUrl}
                     : require('../../assets/images/man3.png')
                 } 
                 style={{
@@ -28,7 +28,7 @@ const CustomerDetailCard = ({order}) => {
             /> 
             <View>
                 <Text style={{fontSize: 20}}>
-                    {order.createdBy.firstName + ' ' + order.createdBy.lastName}
+                    {order.createdBy?.firstName + ' ' + order.createdBy?.lastName}
                 </Text>
                  <Tag text='Customer' type={'Customer'}/>
             </View>
@@ -36,15 +36,15 @@ const CustomerDetailCard = ({order}) => {
         <Divider style={{marginTop: 10}}/>
 
         <TouchableOpacity
-            onPress={()=>{Linking.openURL(`tel:+92${order.createdBy.mobile}`);}}
+            onPress={()=>{Linking.openURL(`tel:+92${order.merchantMobile}`);}}
             style={{flexDirection:'row', alignItems:'center', margin: 20}}>
             <MaterialIcons name="phone" size={35} color={Colors.secGrayMid} style={{marginRight: 30}} />
             <Text style={{fontSize:20}}>
                 {
-                 order.createdBy.mobile !== null &&
-                 order.createdBy.mobile !== undefined &&
-                 order.createdBy.mobile !== ''
-                 ? order?.createdBy.mobile
+                 order.merchantMobile !== null &&
+                 order.merchantMobile !== undefined &&
+                 order.merchantMobile !== ''
+                 ? order?.merchantMobile
                  : '0000-0000-0000'
                 }
             </Text>  

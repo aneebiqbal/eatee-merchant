@@ -2,5 +2,6 @@ export * from './AccountActions';
 export * from './ChangePasswordAction';
 export * from './OrderHistoryAction';
 export * from './OrderTrackingAction';
-export * from './getItemAction';
-export * from './NotificationActions'
+export * from './GetItemAction';
+export * from './NotificationActions';
+export * from './AddressesActions';

@@ -14,6 +14,7 @@ import MyAccountScreen from '../containers/screens/MyAccountScreen';
 import HomeScreen from '../containers/screens/HomeScreen';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { width } from '../theme/Metrics';
+import NotificationScreen from '../containers/screens/NotificationScreen/NotificationScreen';
 
 const _BottomStack = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -79,18 +80,18 @@ const BottomStack = ({props, navigation} )=> {
             </TouchableOpacity>
             );
           }
-          if (route.name === 'HistoryScreen') {
+          if (route.name === 'NotificationScreen') {
             return (
-            <TouchableOpacity onPress={() => navigation.navigate('HistoryScreen')}>
+            <TouchableOpacity onPress={() => navigation.navigate('NotificationScreen')}>
                 <View style={{ width: width/5, alignItems: 'center', justifyContent: 'center' }}>
                   <Image
-                  source={focused ? Images.history : Images.historyUnselected}
+                  source={focused ? Images.notification : Images.notification}
                   style={styles.imgStyle}
                   color={color}
                   size={size}
 
                   />
-                  <Text>History</Text>
+                  <Text>Notification</Text>
               </View>
             </TouchableOpacity>)
           }
@@ -152,14 +153,14 @@ const BottomStack = ({props, navigation} )=> {
         }}
       />
       <_BottomStack.Screen
-        name="HistoryScreen"
-        component={HistoryScreen}
+        name="NotificationScreen"
+        component={NotificationScreen}
         options={{headerShown: false}}
         listeners={{
           tabPress: e => {
             e.preventDefault();
             props.navigation.navigate('BottomStack', {
-              screen: 'HistoryScreen',
+              screen: 'NotificationScreen',
             });
           },
         }}

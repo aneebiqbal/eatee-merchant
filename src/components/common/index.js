@@ -30,6 +30,7 @@ import InventoryItemCard from './InventoryItemCard'
 import ContentDivider from './ContentDivider'
 import ItemRow from './ItemRow'
 import NotificationCard from './NotificationCard'
+import SelectLocation from './SelectLocation'
 
 export {
   InputField,
@@ -63,5 +64,6 @@ export {
   InventoryItemCard,
   ContentDivider,
   ItemRow,
-  NotificationCard
+  NotificationCard,
+  SelectLocation,
 };

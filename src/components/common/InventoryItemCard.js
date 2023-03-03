@@ -1,14 +1,30 @@
 import { View, Text, Switch, TouchableOpacity, Image, SafeAreaView } from "react-native";
 import React, { useState } from "react";
-import { ApplicationStyles, Images } from "../../theme";
+import { ApplicationStyles, Colors, Images } from "../../theme";
 import { Icon } from 'react-native-elements'
 import InventoryMenu from "./InventoryMenu";
+import { getItems, removeItem, removeItems } from "../../actions/GetItemAction";
+import { useDispatch, useSelector } from "react-redux";
+import Spinner from "./Spinner";
 
 const InventoryItemCard = ({object, index, navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [selectedId, setSelectedId] = useState();
+  const [error, setError] = useState('');
+
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   console.log('object', object)
+  const {
+    user: {accessToken},
+  } = useSelector(({AccountState}) => AccountState);
+
+  const dispatch = useDispatch();
+  const onSuccess = () => {
+    debugger;
+    dispatch(getItems(accessToken, object.merchantId));
+  };
   return (
     
     <View
@@ -84,12 +100,31 @@ const InventoryItemCard = ({object, index, navigation}) => {
             value={isEnabled}
           />
         </View>
-        <TouchableOpacity style={{ right: 20 }} onPress={() => navigation.navigate('CreateNewMenuScreen')} result={object}>
+        <TouchableOpacity style={{ right: 20 }} onPress={() => navigation.navigate('CreateNewMenuScreen', {...object})}>
           <Icon name="pencil" type="font-awesome" size={25} color="#0EBE7E" />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="delete" type="material" size={25} color="#FF0000" />
-        </TouchableOpacity>
+        {
+          loading && selectedId === object.id ? (
+            <Spinner size="small" color={Colors.primary} />
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                debugger;
+                setSelectedId(object.id);
+                removeItem(
+                  object.id,
+                  accessToken,
+                  setLoading,
+                  setError,
+                  onSuccess,
+                )
+              }}
+          >
+            <Icon name="delete" type="material" size={25} color="#FF0000" />
+          </TouchableOpacity>
+          )
+        }
+       
       </View>
     </View>
   );

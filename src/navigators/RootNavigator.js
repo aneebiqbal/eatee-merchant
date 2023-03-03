@@ -18,6 +18,7 @@ import OrderStatisticsScreen from '../containers/screens/OrdersScreen/OrderStati
 import OrderHistoryScreen from '../containers/screens/OrdersScreen/OrderDetailsScreen';
 import EditRestaurantDetails from '../containers/screens/SettingsScreen/EditRestaurantDetails';
 import CreateNewMenuScreen from '../containers/screens/InventoryScreen/CreateNewMenuScreen';
+import AddAddressScreen from '../containers/screens/AddressScreen/AddAddressScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,6 +58,11 @@ const AppStack = () => {
       <Stack.Screen
         name="CreateNewMenuScreen"
         component={CreateNewMenuScreen}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name="AddAddressScreen"
+        component={AddAddressScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

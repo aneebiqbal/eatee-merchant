@@ -36,22 +36,29 @@ import { useQuery } from "react-query";
 import { Picker } from "@react-native-picker/picker";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const CreateNewMenuScreen = ({navigation}) => {
+const CreateNewMenuScreen = ({ navigation, route }) => {
+  console.log(route.params);
   const { user } = useSelector(({ AccountState }) => AccountState);
   // const [itemDetail,setItemDetail]=useState([{sizeTypeId:30,price:100}]);
   const [imageUrl, setImage] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
-
+  debugger;
   const initialValues = {
     itemDetails: [{ price: "", sizeTypeId: "", quantity: "" }],
     description: "",
-    name: "",
+    name: route?.params?.name == "" ? "" : route?.params?.name,
     foodCatogeryType: "",
-    isActive: true,
+    isActive: route?.params?.isActive ?? false,
   };
-
+  // const initialValues = {
+  //   itemDetails: itemDetails,
+  //   description: "",
+  //   name: name ,
+  //   foodCatogeryType: foodCatogeryType,
+  //   isActive: isActive,
+  // };
   const sizeOptions = ["Small", "Medium", "Large"];
 
   const onSubmit = (values) => {
@@ -188,33 +195,33 @@ const CreateNewMenuScreen = ({navigation}) => {
                             />
                           </View>
                           {/* {categories?.data.result.length && ( */}
-                            <View style={{ flex: 1, marginHorizontal: 10 }}>
-                              <Picker
-                                selectedValue={values.foodCatogeryType}
-                                style={{
-                                  width: WP(30),
-                                }}
-                                onValueChange={(itemValue, itemIndex) => {
-                                  debugger;
-                                  setFieldValue("foodCatogeryType", itemValue);
-                                }}
-                              >
-                                <Picker.Item
-                                  key={0}
-                                  label={"Select category"}
-                                  value={""}
-                                />
-                                {categories?.data?.result.map(
-                                  (category, index) => (
-                                    <Picker.Item
-                                      key={category.id}
-                                      label={category.name}
-                                      value={category.id}
-                                    />
-                                  )
-                                )}
-                              </Picker>
-                            </View>
+                          <View style={{ flex: 1, marginHorizontal: 10 }}>
+                            <Picker
+                              selectedValue={values.foodCatogeryType}
+                              style={{
+                                width: WP(30),
+                              }}
+                              onValueChange={(itemValue, itemIndex) => {
+                                debugger;
+                                setFieldValue("foodCatogeryType", itemValue);
+                              }}
+                            >
+                              <Picker.Item
+                                key={0}
+                                label={"Select category"}
+                                value={""}
+                              />
+                              {categories?.data?.result.map(
+                                (category, index) => (
+                                  <Picker.Item
+                                    key={category.id}
+                                    label={category.name}
+                                    value={category.id}
+                                  />
+                                )
+                              )}
+                            </Picker>
+                          </View>
                           {/* )} */}
                         </View>
                         <View
