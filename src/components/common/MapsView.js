@@ -19,8 +19,8 @@ const MapsView = (order) => {
         style={styles.container}
         // provider={PROVIDER_GOOGLE}
         initialRegion={{
-          latitude: order?.order.customerAddress.latitude,
-          longitude: order?.order.customerAddress.longitude,
+          latitude: order?.order.customerAddress?.latitude,
+          longitude: order?.order.customerAddress?.longitude,
           latitudeDelta: 0.0,
           longitudeDelta: 0.0,
         }}

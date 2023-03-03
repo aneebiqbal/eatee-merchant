@@ -49,5 +49,7 @@ export default {
   rating: require('../assets/images/rating.png'),
   changePassword: require('../assets/images/changePassword.png'),
   myDetails: require('../assets/images/myDetails.png'),
-
+  notification: require('../assets/images/notification.png'),
+  currentLoc: require('../assets/images/currentLoc.png'),
+  marker: require('../assets/images/marker.png'),
 };

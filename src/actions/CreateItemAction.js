@@ -45,6 +45,42 @@ export const createItemSuccess = data => {
         setLoading(false);
       });
   };
+
+  export const UpdateNewItem = async (
+    values,
+    token,
+    setLoading,
+    onSuccess,
+  ) => {
+    await setLoading(true);
+    await postFunctionWithAuthToken(
+        `${baseUrl}/Item/UpdateItem`,
+        values,
+        token,
+    )
+      .then(data => {
+        console.log('data -- ', data);
+        setLoading(false);
+        if (data.status === 200) {
+          if (data) {
+            onSuccess(values);
+            Toast.show("Item Updated Successfully");
+          }
+        } else {
+          if (data.status === 400) {
+          Toast.show(data.data.errors.Name[0]);
+          } else {
+            Toast.show('Unable to Update item');
+          }
+          
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        Toast.show('Unable to add item');
+        setLoading(false);
+      });
+  };
    export const getCatogeriesByMerchantId = async (token, merchantId) => {
     const response = await fetch( `${baseUrl}/Merchant/GetCategories?merchantId=${merchantId} `, {
       headers: {

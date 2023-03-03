@@ -27,6 +27,9 @@ import InventoryCategory from './InventoryCategory'
 import InventoryMenu from './InventoryMenu'
 import TableRow from './TableRow'
 import InventoryItemCard from './InventoryItemCard'
+import ContentDivider from './ContentDivider'
+import ItemRow from './ItemRow'
+import NotificationCard from './NotificationCard'
 
 export {
   InputField,
@@ -57,5 +60,8 @@ export {
   InventoryCategory,
   InventoryMenu,
   TableRow,
-  InventoryItemCard
+  InventoryItemCard,
+  ContentDivider,
+  ItemRow,
+  NotificationCard
 };

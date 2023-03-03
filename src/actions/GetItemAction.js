@@ -5,7 +5,7 @@ import {
     GET_ITEM_RESET_STATE,
   } from '../constants/action-types';
 
-  import {getFunctionWithAuthToken} from '../api';
+  import {deleteFunctionWithAuthToken, getFunctionWithAuthToken} from '../api';
   import {baseUrl} from '../config';
   
   export const getItemLoading = () => {
@@ -63,4 +63,38 @@ import {
           );
         });
     };
+  };
+
+  export const removeItem = async (
+    id,
+    token,
+    setLoading,
+    setError,
+    onSuccess,
+  ) => {
+    debugger;
+    await setLoading(true);
+    await deleteFunctionWithAuthToken(
+      `${baseUrl}/Item/DeleteItem?id=${id}`,
+      null,
+      token,
+    )
+      .then(data => {
+        debugger;
+        console.log('data -- ', data);
+        if (data.status === 200) {
+          if (data) {
+            console.log(' --', data.data);
+            setLoading(false);
+            onSuccess();
+          }
+        } else {
+          setError('Unable to remove Item');
+          setLoading(false);
+        }
+      })
+      .catch(err => {
+        setError(err);
+        setLoading(false);
+      });
   };
