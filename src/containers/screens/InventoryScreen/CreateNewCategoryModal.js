@@ -28,7 +28,6 @@ const CreateNewCategoryModal = ({ isVisible, closeModal, navigation }) => {
   ]);
   const [fields, setFields] = useState([{ label: "", value: "" }]);
 
-
   const initialValues = {
     categories: [{ name: "", description: "" }],
   };

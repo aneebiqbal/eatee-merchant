@@ -1,6 +1,6 @@
 import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 const MapsView = (order) => {
   
@@ -28,14 +28,15 @@ const MapsView = (order) => {
         maxZoomLevel={16}
         onPress={openMap}
       >
-      {/* <MapView.Marker
+        
+     <Marker
         coordinate={{
-          latitude: order.order.location.latitude.toString(),
-          longitude: order.order.location.longitude.toString()
+          latitude: order?.order.location.latitude.toString(),
+          longitude: order?.order.location.longitude.toString()
         }}
         title= {'selectedAddress.label'}
         description={'strings.nisaSultanAddress'}
-      /> */}
+      />
     </MapView>
   );
 };

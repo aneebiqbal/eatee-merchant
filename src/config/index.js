@@ -1,5 +1,5 @@
 export const baseUrl =
-  'https://mr5lhq7we8.execute-api.eu-west-1.amazonaws.com/Prod/api';
+  'https://sd5ha0bwhk.execute-api.eu-north-1.amazonaws.com/Prod/api';
 export const AWS_ACCESS_KEY_ID = 'AKIATMILZ4WOJJNWGA6Q';
 export const AWS_SECRET_ACCESS_KEY = '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';
 export const AWS_BUCKET_NAME = 'foodlea-api-bucket';
